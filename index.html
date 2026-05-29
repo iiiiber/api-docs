@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Reference — Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #ffffff;
+  --bg-secondary: #f7f8fc;
+  --bg-code: #1e1e2e;
+  --bg-sidebar: #f0f1f7;
+  --border: #e2e4ef;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
+  --accent: #6366f1;
+  --accent-light: #eef2ff;
+  --accent-hover: #4f46e5;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --method-get: #10b981;
+  --method-post: #3b82f6;
+  --method-put: #f59e0b;
+  --method-delete: #ef4444;
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  --radius: 8px;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+/* ─── Header ─── */
+.header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 100;
+  gap: 16px;
+}
+
+.header-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.logo-icon {
+  width: 28px; height: 28px;
+  background: var(--accent);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header-search {
+  flex: 1;
+  max-width: 480px;
+  position: relative;
+}
+
+.header-search input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 14px;
+  background: var(--bg-secondary);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.header-search input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+  background: var(--bg);
+}
+
+.header-search .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.search-kbd {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: 'Inter', sans-serif;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.version-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  background: var(--bg);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.version-badge:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.version-badge .dot {
+  width: 8px; height: 8px;
+  background: var(--success);
+  border-radius: 50%;
+}
+
+.icon-btn {
+  width: 36px; height: 36px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+
+.icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ─── Layout ─── */
+.layout {
+  display: flex;
+  padding-top: var(--header-height);
+  min-height: 100vh;
+}
+
+/* ─── Sidebar ─── */
+.sidebar {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+.sidebar-section {
+  margin-bottom: 24px;
+}
+
+.sidebar-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 0 16px 8px;
+}
+
+.sidebar-nav {
+  list-style: none;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  border-radius: 0;
+  transition: all 0.12s;
+  position: relative;
+}
+
+.sidebar-nav a:hover {
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.04);
+}
+
+.sidebar-nav a.active {
+  color: var(--accent);
+  background: var(--accent-light);
+  font-weight: 500;
+}
+
+.sidebar-nav a.active::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+}
+
+.sidebar-nav a .method-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.sidebar-nav a .method-badge.get { background: #d1fae5; color: #065f46; }
+.sidebar-nav a .method-badge.post { background: #dbeafe; color: #1e40af; }
+.sidebar-nav a .method-badge.put { background: #fef3c7; color: #92400e; }
+.sidebar-nav a .method-badge.delete { background: #fee2e2; color: #991b1b; }
+
+.sidebar-sub {
+  list-style: none;
+  padding-left: 24px;
+}
+
+.sidebar-sub a {
+  font-size: 13px;
+  padding: 5px 16px;
+}
+
+/* ─── Main Content ─── */
+.main {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 40px 48px;
+  max-width: 900px;
+}
+
+/* ─── Endpoint Header ─── */
+.endpoint-header {
+  margin-bottom: 40px;
+}
+
+.endpoint-path {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.method-label {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 5px;
+  color: white;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.method-label.get { background: var(--method-get); }
+.method-label.post { background: var(--method-post); }
+.method-label.put { background: var(--method-put); }
+.method-label.delete { background: var(--method-delete); }
+
+.endpoint-desc {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.endpoint-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.endpoint-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ─── Section ─── */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ─── Parameters Table ─── */
+.params-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.params-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.params-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+.param-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.param-required {
+  display: inline-block;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  margin-left: 4px;
+}
+
+.param-type {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+.param-desc {
+  color: var(--text-secondary);
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* ─── Code Block ─── */
+.code-block {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid #2a2a3e;
+}
+
+.code-block-header {
+  background: #16162a;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #2a2a3e;
+}
+
+.code-block-tabs {
+  display: flex;
+  gap: 4px;
+}
+
+.code-tab {
+  padding: 4px 12px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #8892a4;
+  transition: all 0.12s;
+  border: none;
+  background: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.code-tab.active {
+  background: #2a2a3e;
+  color: #e2e8f0;
+}
+
+.code-copy {
+  font-size: 12px;
+  color: #8892a4;
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.12s;
+  font-family: 'Inter', sans-serif;
+}
+
+.code-copy:hover {
+  background: #2a2a3e;
+  color: #e2e8f0;
+}
+
+.code-block pre {
+  background: var(--bg-code);
+  padding: 20px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #cdd6f4;
+}
+
+.code-block pre .key { color: #89b4fa; }
+.code-block pre .str { color: #a6e3a1; }
+.code-block pre .num { color: #fab387; }
+.code-block pre .comment { color: #6c7086; font-style: italic; }
+.code-block pre .bool { color: #f38ba8; }
+
+/* ─── Try It ─── */
+.tryit-panel {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.tryit-header {
+  padding: 12px 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tryit-title {
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tryit-title .bolt {
+  color: var(--warning);
+}
+
+.tryit-url-bar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.tryit-method {
+  padding: 8px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  border-right: none;
+  border-radius: var(--radius) 0 0 var(--radius);
+  background: var(--bg-secondary);
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--method-get);
+}
+
+.tryit-url-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  outline: none;
+  background: var(--bg);
+}
+
+.tryit-params {
+  padding: 16px;
+}
+
+.tryit-param-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.tryit-param-row label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  color: var(--accent);
+  min-width: 80px;
+  font-weight: 500;
+}
+
+.tryit-param-row input {
+  flex: 1;
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bg);
+  outline: none;
+}
+
+.tryit-param-row input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.tryit-send {
+  margin: 0 16px 16px;
+  padding: 10px 20px;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: 'Inter', sans-serif;
+}
+
+.tryit-send:hover {
+  background: var(--accent-hover);
+}
+
+.tryit-response {
+  border-top: 1px solid var(--border);
+  background: var(--bg-code);
+  padding: 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
+  color: #cdd6f4;
+  max-height: 240px;
+  overflow-y: auto;
+  display: none;
+}
+
+.tryit-response.visible {
+  display: block;
+}
+
+.response-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #16162a;
+  border-bottom: 1px solid #2a2a3e;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+}
+
+.status-dot.ok { background: var(--success); }
+.status-dot.error { background: var(--danger); }
+
+/* ─── Response Fields ─── */
+.response-fields {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+.response-fields th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.response-fields td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+}
+
+/* ─── Response Codes ─── */
+.response-codes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.response-code-card {
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.response-code-card .code {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.response-code-card .code.ok { color: var(--success); }
+.response-code-card .code.warn { color: var(--warning); }
+.response-code-card .code.err { color: var(--danger); }
+
+.response-code-card .desc {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+/* ─── OnThisPage ─── */
+.on-this-page {
+  position: fixed;
+  top: var(--header-height);
+  right: 24px;
+  width: 200px;
+  padding: 20px 0;
+  display: none;
+}
+
+@media (min-width: 1200px) {
+  .on-this-page { display: block; }
+}
+
+.otp-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.otp-links {
+  list-style: none;
+}
+
+.otp-links a {
+  display: block;
+  padding: 4px 0;
+  font-size: 12.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.12s;
+  border-left: 2px solid transparent;
+  padding-left: 10px;
+}
+
+.otp-links a:hover, .otp-links a.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+/* ─── Breadcrumb ─── */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  color: var(--accent);
+}
+
+.breadcrumb span {
+  color: var(--text-muted);
+}
+
+/* ─── Animations ─── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.section {
+  animation: fadeIn 0.4s ease both;
+}
+
+.section:nth-child(2) { animation-delay: 0.05s; }
+.section:nth-child(3) { animation-delay: 0.1s; }
+.section:nth-child(4) { animation-delay: 0.15s; }
+.section:nth-child(5) { animation-delay: 0.2s; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <a href="#" class="header-logo">
+    <div class="logo-icon">N</div>
+    NovaAPI
+  </a>
+  <div class="header-search">
+    <span class="search-icon">&#x2315;</span>
+    <input type="text" placeholder="Search docs...">
+    <span class="search-kbd">&#8984;K</span>
+  </div>
+  <div class="header-right">
+    <button class="version-badge">
+      <span class="dot"></span>
+      v2.4.1
+    </button>
+    <button class="icon-btn" title="GitHub">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+      </svg>
+    </button>
+    <button class="icon-btn" title="Theme">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="layout">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">入门指南</div>
+      <ul class="sidebar-nav">
+        <li><a href="#">简介</a></li>
+        <li><a href="#">认证方式</a></li>
+        <li><a href="#">请求频率限制</a></li>
+        <li><a href="#">错误码说明</a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">用户</div>
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active">
+          <span class="method-badge get">GET</span>
+          获取用户列表
+        </a></li>
+        <li><a href="#">
+          <span class="method-badge get">GET</span>
+          获取单个用户
+        </a></li>
+        <li><a href="#">
+          <span class="method-badge post">POST</span>
+          创建用户
+        </a></li>
+        <li><a href="#">
+          <span class="method-badge put">PUT</span>
+          更新用户
+        </a></li>
+        <li><a href="#">
+          <span class="method-badge delete">DEL</span>
+          删除用户
+        </a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">项目</div>
+      <ul class="sidebar-nav">
+        <li><a href="#">
+          <span class="method-badge get">GET</span>
+          获取项目列表
+        </a></li>
+        <li><a href="#">
+          <span class="method-badge post">POST</span>
+          创建项目
+        </a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">Webhook</div>
+      <ul class="sidebar-nav">
+        <li><a href="#">
+          <span class="method-badge get">GET</span>
+          获取Webhook列表
+        </a></li>
+        <li><a href="#">
+          <span class="method-badge post">POST</span>
+          创建Webhook
+        </a></li>
+      </ul>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-title">SDK</div>
+      <ul class="sidebar-nav">
+        <li><a href="#">JavaScript</a></li>
+        <li><a href="#">Python</a></li>
+        <li><a href="#">Go</a></li>
+        <li><a href="#">Rust</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <main class="main">
+    <nav class="breadcrumb">
+      <a href="#">文档</a>
+      <span>/</span>
+      <a href="#">用户</a>
+      <span>/</span>
+      <strong>获取用户列表</strong>
+    </nav>
+
+    <div class="endpoint-header">
+      <div class="endpoint-path">
+        <span class="method-label get">GET</span>
+        /v2/users
+      </div>
+      <p class="endpoint-desc">返回组织内所有用户的分页列表，支持按角色、状态、创建时间筛选。</p>
+      <div class="endpoint-meta">
+        <span>&#x1F4C5; 3天前更新</span>
+        <span>&#x270F; 在 GitHub 上编辑</span>
+      </div>
+    </div>
+
+    <!-- Parameters -->
+    <div class="section">
+      <h2 class="section-title">查询参数</h2>
+      <table class="params-table">
+        <thead>
+          <tr>
+            <th style="width:200px">Name</th>
+            <th style="width:120px">Type</th>
+            <th style="width:120px">Required</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="param-name">page</span></td>
+            <td><span class="param-type">integer</span></td>
+            <td><span class="param-required">required</span></td>
+            <td>
+              <div class="param-desc">Page number for pagination. Each page returns a maximum of 100 records.</div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="param-name">limit</span></td>
+            <td><span class="param-type">integer</span></td>
+            <td></td>
+            <td>
+              <div class="param-desc">Number of results per page. Default is 20, maximum is 100.</div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="param-name">role</span></td>
+            <td><span class="param-type">string</span></td>
+            <td></td>
+            <td>
+              <div class="param-desc">Filter users by role. Supported values: <code>admin</code>, <code>member</code>, <code>viewer</code>.</div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="param-name">status</span></td>
+            <td><span class="param-type">string</span></td>
+            <td></td>
+            <td>
+              <div class="param-desc">Filter by account status. Options: <code>active</code>, <code>inactive</code>, <code>pending</code>.</div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="param-name">created_after</span></td>
+            <td><span class="param-type">ISO 8601</span></td>
+            <td></td>
+            <td>
+              <div class="param-desc">Return only users created after this timestamp. Example: <code>2024-01-01T00:00:00Z</code></div>
+            </td>
+          </tr>
+          <tr>
+            <td><span class="param-name">sort</span></td>
+            <td><span class="param-type">string</span></td>
+            <td></td>
+            <td>
+              <div class="param-desc">Sort field. Defaults to <code>created_at</code>. Options: <code>name</code>, <code>email</code>, <code>created_at</code>, <code>last_active</code>.</div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Example Request -->
+    <div class="section">
+      <h2 class="section-title">Example Request</h2>
+      <div class="code-block">
+        <div class="code-block-header">
+          <div class="code-block-tabs">
+            <button class="code-tab active" onclick="switchTab(this, 'curl')">cURL</button>
+            <button class="code-tab" onclick="switchTab(this, 'js')">JavaScript</button>
+            <button class="code-tab" onclick="switchTab(this, 'python')">Python</button>
+            <button class="code-tab" onclick="switchTab(this, 'go')">Go</button>
+          </div>
+          <button class="code-copy" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre id="code-content"><span class="comment"># List users, page 1, filter by active members</span>
+curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role=member&status=active"</span> \
+  -H <span class="str">"Authorization: Bearer YOUR_API_KEY"</span> \
+  -H <span class="str">"Accept: application/json"</span></pre>
+      </div>
+    </div>
+
+    <!-- Try It -->
+    <div class="section">
+      <h2 class="section-title">Try It</h2>
+      <div class="tryit-panel">
+        <div class="tryit-header">
+          <div class="tryit-title">
+            <span class="bolt">&#9889;</span>
+            API Playground
+          </div>
+          <button class="code-copy" onclick="toggleHeaders(this)">Headers &#9660;</button>
+        </div>
+        <div class="tryit-url-bar">
+          <span class="tryit-method">GET</span>
+          <input class="tryit-url-input" type="text" value="https://api.nova.io/v2/users?page=1&limit=20" readonly>
+        </div>
+        <div class="tryit-params">
+          <div class="tryit-param-row">
+            <label>page</label>
+            <input type="text" value="1" oninput="updateUrl()">
+          </div>
+          <div class="tryit-param-row">
+            <label>limit</label>
+            <input type="text" value="20" oninput="updateUrl()">
+          </div>
+          <div class="tryit-param-row">
+            <label>role</label>
+            <input type="text" placeholder="admin | member | viewer">
+          </div>
+          <div class="tryit-param-row">
+            <label>status</label>
+            <input type="text" placeholder="active | inactive | pending">
+          </div>
+        </div>
+        <button class="tryit-send" onclick="sendRequest()">Send Request</button>
+        <div class="response-status" id="response-status" style="display:none">
+          <span class="status-dot ok" id="status-dot"></span>
+          <span id="status-text">200 OK</span>
+          <span style="margin-left:auto;color:#6c7086" id="response-time">12ms</span>
+        </div>
+        <div class="tryit-response" id="tryit-response"><pre>{
+  <span class="key">"data"</span>: [
+    {
+      <span class="key">"id"</span>: <span class="str">"usr_01hx7k2p3m"</span>,
+      <span class="key">"name"</span>: <span class="str">"Lin Wei"</span>,
+      <span class="key">"email"</span>: <span class="str">"lin@example.com"</span>,
+      <span class="key">"role"</span>: <span class="str">"member"</span>,
+      <span class="key">"status"</span>: <span class="str">"active"</span>,
+      <span class="key">"created_at"</span>: <span class="str">"2024-03-15T09:22:00Z"</span>,
+      <span class="key">"last_active"</span>: <span class="str">"2024-11-28T14:05:33Z"</span>
+    },
+    {
+      <span class="key">"id"</span>: <span class="str">"usr_01hx7k2q4n"</span>,
+      <span class="key">"name"</span>: <span class="str">"Mariam Okafor"</span>,
+      <span class="key">"email"</span>: <span class="str">"mariam@example.com"</span>,
+      <span class="key">"role"</span>: <span class="str">"admin"</span>,
+      <span class="key">"status"</span>: <span class="str">"active"</span>,
+      <span class="key">"created_at"</span>: <span class="str">"2024-05-02T11:44:18Z"</span>,
+      <span class="key">"last_active"</span>: <span class="str">"2024-11-29T08:30:00Z"</span>
+    }
+  ],
+  <span class="key">"pagination"</span>: {
+    <span class="key">"page"</span>: <span class="num">1</span>,
+    <span class="key">"limit"</span>: <span class="num">20</span>,
+    <span class="key">"total"</span>: <span class="num">248</span>,
+    <span class="key">"total_pages"</span>: <span class="num">13</span>,
+    <span class="key">"has_more"</span>: <span class="bool">true</span>
+  }
+}</pre></div>
+      </div>
+    </div>
+
+    <!-- Response Fields -->
+    <div class="section">
+      <h2 class="section-title">Response Fields</h2>
+      <table class="response-fields">
+        <thead>
+          <tr>
+            <th style="width:200px">Field</th>
+            <th style="width:120px">Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="param-name">data[].id</span></td>
+            <td><span class="param-type">string</span></td>
+            <td><div class="param-desc">Unique user identifier prefixed with <code>usr_</code>.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">data[].name</span></td>
+            <td><span class="param-type">string</span></td>
+            <td><div class="param-desc">Full name of the user.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">data[].email</span></td>
+            <td><span class="param-type">string</span></td>
+            <td><div class="param-desc">Email address. Must be verified before the user can access the API.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">data[].role</span></td>
+            <td><span class="param-type">string</span></td>
+            <td><div class="param-desc">User's role in the organization. One of <code>admin</code>, <code>member</code>, <code>viewer</code>.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">data[].status</span></td>
+            <td><span class="param-type">string</span></td>
+            <td><div class="param-desc">Current account status. Active users can authenticate. Inactive users cannot.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">data[].created_at</span></td>
+            <td><span class="param-type">ISO 8601</span></td>
+            <td><div class="param-desc">Timestamp when the user account was created.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">data[].last_active</span></td>
+            <td><span class="param-type">ISO 8601</span></td>
+            <td><div class="param-desc">Timestamp of the user's most recent API request or dashboard activity.</div></td>
+          </tr>
+          <tr>
+            <td><span class="param-name">pagination</span></td>
+            <td><span class="param-type">object</span></td>
+            <td><div class="param-desc">Pagination metadata object.</div></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Response Codes -->
+    <div class="section">
+      <h2 class="section-title">Response Codes</h2>
+      <div class="response-codes">
+        <div class="response-code-card">
+          <div class="code ok">200 OK</div>
+          <div class="desc">Request succeeded. Body contains user array and pagination.</div>
+        </div>
+        <div class="response-code-card">
+          <div class="code err">400 Bad Request</div>
+          <div class="desc">Invalid query parameters. Check the <code>message</code> field for details.</div>
+        </div>
+        <div class="response-code-card">
+          <div class="code err">401 Unauthorized</div>
+          <div class="desc">Missing or invalid API key in the Authorization header.</div>
+        </div>
+        <div class="response-code-card">
+          <div class="code warn">403 Forbidden</div>
+          <div class="desc">Your API key does not have permission to list users.</div>
+        </div>
+        <div class="response-code-card">
+          <div class="code warn">429 Too Many Requests</div>
+          <div class="desc">Rate limit exceeded. See the <code>X-RateLimit-Reset</code> header.</div>
+        </div>
+        <div class="response-code-card">
+          <div class="code err">500 Internal Error</div>
+          <div class="desc">Something went wrong on our end. Try again in a few minutes.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- On This Page -->
+  <aside class="on-this-page">
+    <div class="otp-title">On This Page</div>
+    <ul class="otp-links">
+      <li><a href="#" class="active">Query Parameters</a></li>
+      <li><a href="#">Example Request</a></li>
+      <li><a href="#">Try It</a></li>
+      <li><a href="#">Response Fields</a></li>
+      <li><a href="#">Response Codes</a></li>
+    </ul>
+  </aside>
+</div>
+
+<script>
+function switchTab(btn, lang) {
+  document.querySelectorAll('.code-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  const snippets = {
+    curl: '<span class="comment"># List users, page 1, filter by active members</span>\ncurl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role=member&status=active"</span> \\\n  -H <span class="str">"Authorization: Bearer YOUR_API_KEY"</span> \\\n  -H <span class="str">"Accept: application/json"</span>',
+    js: '<span class="comment">// List users via JavaScript SDK</span>\n<span class="key">const</span> client = <span class="key">new</span> NovaClient(<span class="str">"YOUR_API_KEY"</span>);\n\n<span class="key">const</span> users = <span class="key">await</span> client.users.list({\n  page: <span class="num">1</span>,\n  limit: <span class="num">20</span>,\n  role: <span class="str">"member"</span>,\n  status: <span class="str">"active"</span>\n});\n\nconsole.log(users.data);',
+    python: '<span class="comment"># List users via Python SDK</span>\n<span class="key">from</span> novaio <span class="key">import</span> NovaClient\n\nclient = NovaClient(<span class="str">"YOUR_API_KEY"</span>)\n\nusers = client.users.list(\n    page=<span class="num">1</span>,\n    limit=<span class="num">20</span>,\n    role=<span class="str">"member"</span>,\n    status=<span class="str">"active"</span>\n)\n\n<span class="key">print</span>(users.data)',
+    go: '<span class="comment">// List users via Go SDK</span>\nclient := novaio.NewClient(<span class="str">"YOUR_API_KEY"</span>)\n\nusers, err := client.Users.List(&novaio.ListUsersParams{\n    Page:   <span class="num">1</span>,\n    Limit:  <span class="num">20</span>,\n    Role:   <span class="str">"member"</span>,\n    Status: <span class="str">"active"</span>,\n})'
+  };
+
+  document.getElementById('code-content').innerHTML = snippets[lang];
+}
+
+function copyCode(btn) {
+  const text = document.getElementById('code-content').innerText;
+  navigator.clipboard.writeText(text).then(() => {
+    btn.textContent = 'Copied!';
+    setTimeout(() => btn.textContent = 'Copy', 1500);
+  });
+}
+
+function updateUrl() {
+  const page = document.querySelectorAll('.tryit-param-row input')[0].value || '1';
+  const limit = document.querySelectorAll('.tryit-param-row input')[1].value || '20';
+  document.querySelector('.tryit-url-input').value = `https://api.nova.io/v2/users?page=${page}&limit=${limit}`;
+}
+
+function sendRequest() {
+  const respDiv = document.getElementById('tryit-response');
+  const statusDiv = document.getElementById('response-status');
+  const statusDot = document.getElementById('status-dot');
+  const statusText = document.getElementById('status-text');
+
+  statusDiv.style.display = 'flex';
+  statusDot.className = 'status-dot ok';
+  statusText.textContent = '200 OK';
+  statusText.style.color = '#10b981';
+
+  respDiv.classList.add('visible');
+}
+</script>
+</body>
+</html>
