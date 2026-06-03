@@ -705,6 +705,52 @@ body {
   .doc-content h1 { font-size: 24px !important; }
   .doc-content h2 { font-size: 18px !important; }
 }
+
+/* 平板 - 分类卡片 2 列 */
+@media (max-width: 700px) {
+  /* 4 个分类卡片 grid 改为单列 */
+  .layout div[style*="grid-template-columns:repeat(2,1fr)"],
+  .layout div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* 文章标签/数据列换行 */
+  .article-meta { gap: 8px !important; font-size: 12px !important; }
+  /* 文章标题缩放 */
+  .article-card h3 { font-size: 15px !important; }
+  .article-card { padding: 16px !important; }
+  /* 主页 h1 / 渐变标题缩小 */
+  h1[style*="font-size: 28px"] { font-size: 22px !important; }
+  h2[style*="font-size: 24px"] { font-size: 18px !important; }
+  h2[style*="font-size: 20px"] { font-size: 17px !important; }
+  h2[style*="font-size: 18px"] { font-size: 16px !important; }
+  /* 面包屑允许换行 */
+  .breadcrumb-nav { font-size: 12px !important; }
+  /* 文章正文 */
+  .article-body { font-size: 14px !important; }
+  .article-body h2 { font-size: 17px !important; }
+  .article-body h3 { font-size: 15px !important; }
+  .article-body table { font-size: 12px !important; display: block; overflow-x: auto; }
+  .article-body pre { font-size: 12px !important; padding: 12px !important; }
+  /* 文章卡 meta 换行 */
+  .article-card .meta { gap: 6px !important; font-size: 11px !important; }
+  /* 主区域 padding 再小一点 */
+  .main { padding: 16px 14px !important; }
+  /* 标签栏 padding */
+  .article-tag { font-size: 11px !important; padding: 2px 8px !important; }
+}
+
+/* 小屏手机 - 进一步压缩 */
+@media (max-width: 480px) {
+  .main { padding: 12px 10px !important; }
+  .header { padding: 0 12px !important; gap: 8px !important; }
+  .article-card { padding: 12px !important; }
+  .article-card h3 { font-size: 14px !important; }
+  .article-card p { font-size: 12px !important; }
+  /* 顶部 Logo 字号 */
+  .header-logo { font-size: 15px !important; }
+  /* 标签更紧凑 */
+  div[style*="padding:6px 14px"] { padding: 4px 10px !important; font-size: 11px !important; }
+}
 .mobile-menu-btn {
   display: none;
   background: none; border: 1px solid var(--border); border-radius: 6px;
