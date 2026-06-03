@@ -814,6 +814,19 @@ body {
 .section:nth-child(3) { animation-delay: 0.1s; }
 .section:nth-child(4) { animation-delay: 0.15s; }
 .section:nth-child(5) { animation-delay: 0.2s; }
+
+/* ─── SVG Icon Styles ─── */
+.sb-icon { display: inline-flex; vertical-align: -3px; margin-right: 6px; color: var(--accent); }
+.sb-icon svg { color: var(--accent); }
+.sidebar-title { display: flex; align-items: center; }
+.cat-icon-wrap { margin-bottom: 10px; height: 32px; display: flex; align-items: center; }
+.cat-icon-wrap svg { width: 32px; height: 32px; color: var(--accent); }
+.sub-icon { display: inline-flex; vertical-align: -2px; margin-right: 6px; }
+.sub-icon svg { color: var(--accent); width: 14px; height: 14px; }
+.title-icon { display: inline-flex; vertical-align: -3px; margin-right: 6px; }
+.title-icon svg { width: 18px; height: 18px; }
+.pending-icon svg { width: 12px; height: 12px; }
+
 </style>
 </head>
 <body>
@@ -826,7 +839,7 @@ body {
     </svg>
   </button>
   <a href="#section-top" class="header-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <div class="logo-icon">📚</div>
+    <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 256 256" fill="currentColor"><path d="M232 56H160a40 40 0 0 0-32 16 40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24 8 8 0 0 0 16 0 24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V64a8 8 0 0 0-8-8zM96 184H32V72h64a24 24 0 0 1 24 24v100.31A40 40 0 0 0 96 184zm128 0h-64a40 40 0 0 0-24 7.69V96a24 24 0 0 1 24-24h64v112z"/></svg></div>
     综合知识库
   </a>
   <div class="header-search">
@@ -858,7 +871,7 @@ body {
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">📚 知识库首页</div>
+      <div class="sidebar-title"><span class="sb-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><path d="M40 216V120l88-72 88 72v96a8 8 0 0 1-8 8H48a8 8 0 0 1-8-8z"/></svg></span> 知识库首页</div>
       <ul class="sidebar-nav">
         <li><a href="#section-welcome" class="active">欢迎 & 说明</a></li>
         <li><a href="#section-todo">待完善 TODO</a></li>
@@ -866,7 +879,7 @@ body {
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">🛠️ 技术学习</div>
+      <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48"/><path d="M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49"/><path d="M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17"/><path d="M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48"/></svg></span> 技术学习</div>
       <ul class="sidebar-nav">
         <li><a href="#cat-tech">分类总览</a></li>
         <li><a href="#cat-tech-1">Linux 命令 & 脚本</a></li>
@@ -876,7 +889,7 @@ body {
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">🤖 AI & 量化</div>
+      <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></span> AI & 量化</div>
       <ul class="sidebar-nav">
         <li><a href="#cat-ai">分类总览</a></li>
         <li><a href="#cat-ai-1">LLM / Prompt 工程</a></li>
@@ -886,7 +899,7 @@ body {
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">💼 副业 & 创业</div>
+      <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="72" width="192" height="144" rx="8"/><path d="M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16"/><line x1="32" y1="136" x2="224" y2="136"/><path d="M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24"/></svg></span> 副业 & 创业</div>
       <ul class="sidebar-nav">
         <li><a href="#cat-biz">分类总览</a></li>
         <li><a href="#cat-biz-1">选品思路 & 调研</a></li>
@@ -896,7 +909,7 @@ body {
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">🔧 工具箱</div>
+      <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/></svg></span> 工具箱</div>
       <ul class="sidebar-nav">
         <li><a href="#cat-tools">分类总览</a></li>
         <li><a href="#cat-tools-1">常用命令 / 脚本</a></li>
@@ -917,7 +930,7 @@ body {
 
     <!-- 欢迎 -->
     <div class="section" id="section-welcome">
-      <h2 class="section-title" id="section-top">👋 欢迎来到综合知识库</h2>
+      <h2 class="section-title" id="section-top"><span class="title-icon" style="color:var(--success);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><polyline points="40 144 96 200 224 72"/></svg></span> 欢迎来到综合知识库</h2>
       <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin-bottom: 16px;">
         这是鹏飞的个人知识库，跨领域记录：<strong>技术学习 / AI & 量化 / 副业探索 / 工具箱</strong>。
       </p>
@@ -925,15 +938,15 @@ body {
         框架先用起来，内容逐步补充。每个分类下用 <code>#cat-xxx-n</code> 锚点定位文章，文章用 Markdown 直接写在 HTML 里。
       </p>
       <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;">
-        <span style="background: var(--accent-light); color: var(--accent); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">📝 自用</span>
-        <span style="background: rgba(16,185,129,0.1); color: var(--success); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">🌱 持续完善</span>
-        <span style="background: rgba(245,158,11,0.1); color: var(--warning); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">v0.1 · 2026-06-03 初始化</span>
+        <span style="background: var(--accent-light); color: var(--accent); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; display:inline-flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><polyline points="40 144 96 200 224 72"/></svg> 自用</span>
+        <span style="background: rgba(16,185,129,0.1); color: var(--success); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; display:inline-flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M128 24c32 32 48 80 48 128l-48 48-48-48c0-48 16-96 48-128z"/><circle cx="128" cy="104" r="16"/><line x1="80" y1="160" x2="48" y2="192"/><line x1="176" y1="160" x2="208" y2="192"/></svg> 持续完善</span>
+        <span style="background: rgba(245,158,11,0.1); color: var(--warning); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; display:inline-flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="216" x2="40" y2="40"/><path d="M40 40h120l-24 40 24 40H40"/></svg> v0.1 · 2026-06-03 初始化</span>
       </div>
     </div>
 
     <!-- TODO -->
     <div class="section" id="section-todo">
-      <h2 class="section-title">📋 待完善 TODO</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--warning);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><circle cx="40" cy="64" r="6" fill="currentColor"/><circle cx="40" cy="128" r="6" fill="currentColor"/><circle cx="40" cy="192" r="6" fill="currentColor"/></svg></span> 待完善 TODO</h2>
       <ul style="color: var(--text-secondary); font-size: 14px; line-height: 2; padding-left: 24px;">
         <li><input type="checkbox" disabled /> 4 个分类的"分类总览"页面（介绍 + 文章列表）</li>
         <li><input type="checkbox" disabled /> 4×4 = 16 个子分类的占位文章（先放标题 + 简介）</li>
@@ -946,7 +959,7 @@ body {
 
     <!-- 分类总览 -->
     <div class="section">
-      <h2 class="section-title">🗂️ 四大分类</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="40" width="80" height="80" rx="8"/><rect x="136" y="40" width="80" height="80" rx="8"/><rect x="40" y="136" width="80" height="80" rx="8"/><rect x="136" y="136" width="80" height="80" rx="8"/></svg></span> 四大分类</h2>
       <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
         点击左侧菜单进入具体子分类。后续随用随加。
       </p>
@@ -956,7 +969,7 @@ body {
         <!-- 技术学习 -->
         <a href="#cat-tech" style="text-decoration: none; color: inherit;">
           <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size: 24px; margin-bottom: 8px;">🛠️</div>
+            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48"/><path d="M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49"/><path d="M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17"/><path d="M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48"/></svg></div>
             <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">技术学习</h3>
             <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">Linux 脚本、银河麒麟适配、前后端笔记、DevOps 部署实战</p>
             <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
@@ -966,7 +979,7 @@ body {
         <!-- AI & 量化 -->
         <a href="#cat-ai" style="text-decoration: none; color: inherit;">
           <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size: 24px; margin-bottom: 8px;">🤖</div>
+            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></div>
             <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">AI & 量化</h3>
             <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">LLM 应用、Prompt、OpenClaw、量化交易框架、AI 副业</p>
             <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
@@ -976,7 +989,7 @@ body {
         <!-- 副业 & 创业 -->
         <a href="#cat-biz" style="text-decoration: none; color: inherit;">
           <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size: 24px; margin-bottom: 8px;">💼</div>
+            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="72" width="192" height="144" rx="8"/><path d="M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16"/><line x1="32" y1="136" x2="224" y2="136"/><path d="M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24"/></svg></div>
             <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">副业 & 创业</h3>
             <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">选品调研、项目复盘、流量方法、变现方法论</p>
             <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
@@ -986,7 +999,7 @@ body {
         <!-- 工具箱 -->
         <a href="#cat-tools" style="text-decoration: none; color: inherit;">
           <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div style="font-size: 24px; margin-bottom: 8px;">🔧</div>
+            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/></svg></div>
             <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">工具箱</h3>
             <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">常用命令、在线工具收藏、效率软件、踩坑记录</p>
             <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
@@ -998,60 +1011,60 @@ body {
 
     <!-- 分类总览区块（点击左侧菜单时滚动到这里） -->
     <div class="section" id="cat-tech">
-      <h2 class="section-title">🛠️ 技术学习 · 分类总览</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48"/><path d="M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49"/><path d="M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17"/><path d="M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48"/></svg></span> 技术学习 · 分类总览</h2>
       <p style="color: var(--text-secondary); font-size: 14px;">主业相关 + 日常技术积累。</p>
       <h3 id="cat-tech-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">Linux 命令 & 脚本</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充内容。日常积累的 Linux 命令、bash 脚本、效率技巧。</p>
-      <h3 id="cat-tech-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">银河麒麟适配</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。主业核心：操作系统适配、驱动调试、兼容性测试方法论。</p>
-      <h3 id="cat-tech-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">前端 / 后端笔记</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。HTML/CSS/JS、Node.js、Python、API 设计等笔记。</p>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充内容。日常积累的 Linux 命令、bash 脚本、效率技巧。</p>
+      <h3 id="cat-tech-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="128" r="96"/><path d="M88 168l40-80 40 80"/><line x1="100" y1="148" x2="156" y2="148"/><circle cx="128" cy="100" r="8"/></svg></span> 银河麒麟适配</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。主业核心：操作系统适配、驱动调试、兼容性测试方法论。</p>
+      <h3 id="cat-tech-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><polyline points="92 80 52 128 92 176"/><polyline points="164 80 204 128 164 176"/><line x1="148" y1="64" x2="108" y2="192"/></svg></span> 前端 / 后端笔记</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。HTML/CSS/JS、Node.js、Python、API 设计等笔记。</p>
       <h3 id="cat-tech-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">DevOps & 部署</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。Cloudflare Pages、GitHub Actions、服务器部署、CI/CD。</p>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。Cloudflare Pages、GitHub Actions、服务器部署、CI/CD。</p>
     </div>
 
     <div class="section" id="cat-ai">
-      <h2 class="section-title">🤖 AI & 量化 · 分类总览</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></span> AI & 量化 · 分类总览</h2>
       <p style="color: var(--text-secondary); font-size: 14px;">AI 应用 + 量化交易实战。</p>
-      <h3 id="cat-ai-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">LLM / Prompt 工程</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。Claude、GPT、Gemini 用法，Prompt 设计技巧。</p>
-      <h3 id="cat-ai-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">OpenClaw / Agent</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。OpenClaw 使用、Agent 编排、Skills、Memory 系统。</p>
-      <h3 id="cat-ai-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">量化交易</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。funds.imoons.cn 升级、freqtrade、backtrader、ccxt。</p>
-      <h3 id="cat-ai-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">AI 副业探索</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。AI 工具栈、批量生产、副业 ROI 评估。</p>
+      <h3 id="cat-ai-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="48" y="48" width="160" height="160" rx="8"/><rect x="84" y="84" width="88" height="88" rx="4"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/><line x1="32" y1="80" x2="64" y2="80"/><line x1="32" y1="128" x2="64" y2="128"/><line x1="32" y1="176" x2="64" y2="176"/><line x1="192" y1="80" x2="224" y2="80"/><line x1="192" y1="128" x2="224" y2="128"/><line x1="192" y1="176" x2="224" y2="176"/></svg></span> LLM / Prompt 工程</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。Claude、GPT、Gemini 用法，Prompt 设计技巧。</p>
+      <h3 id="cat-ai-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></span> OpenClaw / Agent</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。OpenClaw 使用、Agent 编排、Skills、Memory 系统。</p>
+      <h3 id="cat-ai-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><line x1="32" y1="200" x2="224" y2="200"/><polyline points="56 160 96 120 136 144 200 80"/><polyline points="168 80 200 80 200 112"/></svg></span> 量化交易</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。funds.imoons.cn 升级、freqtrade、backtrader、ccxt。</p>
+      <h3 id="cat-ai-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M128 64a56 56 0 0 0-32 100v8a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-8a56 56 0 0 0-32-100z"/><line x1="112" y1="200" x2="144" y2="200"/><line x1="112" y1="216" x2="144" y2="216"/></svg></span> AI 副业探索</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。AI 工具栈、批量生产、副业 ROI 评估。</p>
     </div>
 
     <div class="section" id="cat-biz">
-      <h2 class="section-title">💼 副业 & 创业 · 分类总览</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="72" width="192" height="144" rx="8"/><path d="M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16"/><line x1="32" y1="136" x2="224" y2="136"/><path d="M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24"/></svg></span> 副业 & 创业 · 分类总览</h2>
       <p style="color: var(--text-secondary); font-size: 14px;">项目选型 + 复盘记录。</p>
       <h3 id="cat-biz-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">选品思路 & 调研</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。选品框架、市场调研、竞品分析模板。</p>
-      <h3 id="cat-biz-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">项目复盘</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。旧衣回收复盘、快递项目复盘、其他已关停/进行中项目。</p>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。选品框架、市场调研、竞品分析模板。</p>
+      <h3 id="cat-biz-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="216" x2="40" y2="40"/><path d="M40 40h120l-24 40 24 40H40"/></svg></span> 项目复盘</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。旧衣回收复盘、快递项目复盘、其他已关停/进行中项目。</p>
       <h3 id="cat-biz-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">流量 & 推广</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。闲鱼、小红书、视频号等平台玩法。</p>
-      <h3 id="cat-biz-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">变现方法论</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。订阅制、API 计费、广告联盟等变现路径。</p>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。闲鱼、小红书、视频号等平台玩法。</p>
+      <h3 id="cat-biz-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="80" width="192" height="96" rx="8"/><circle cx="128" cy="128" r="28"/><circle cx="180" cy="104" r="4" fill="currentColor"/><circle cx="76" cy="152" r="4" fill="currentColor"/></svg></span> 变现方法论</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。订阅制、API 计费、广告联盟等变现路径。</p>
     </div>
 
     <div class="section" id="cat-tools">
-      <h2 class="section-title">🔧 工具箱 · 分类总览</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/></svg></span> 工具箱 · 分类总览</h2>
       <p style="color: var(--text-secondary); font-size: 14px;">日常工具 + 踩坑记录。</p>
-      <h3 id="cat-tools-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">常用命令 / 脚本</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。fzf、tmux、ssh、git 等日常必备。</p>
-      <h3 id="cat-tools-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">在线工具收藏</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。JSON 格式化、Base64、UUID 生成、临时邮箱等。</p>
+      <h3 id="cat-tools-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="40" width="192" height="176" rx="8"/><polyline points="80 96 112 128 80 160"/><line x1="120" y1="160" x2="160" y2="160"/></svg></span> 常用命令 / 脚本</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。fzf、tmux、ssh、git 等日常必备。</p>
+      <h3 id="cat-tools-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="128" r="96"/><ellipse cx="128" cy="128" rx="40" ry="96"/><line x1="32" y1="128" x2="224" y2="128"/></svg></span> 在线工具收藏</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。JSON 格式化、Base64、UUID 生成、临时邮箱等。</p>
       <h3 id="cat-tools-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">效率软件 & 配置</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。VSCode、Raycast、uTools、Obsidian 等。</p>
-      <h3 id="cat-tools-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">踩坑记录</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。环境配置踩坑、版本冲突、依赖问题等。</p>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。VSCode、Raycast、uTools、Obsidian 等。</p>
+      <h3 id="cat-tools-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="64" y="80" width="128" height="144" rx="8"/><line x1="80" y1="80" x2="80" y2="48"/><line x1="176" y1="80" x2="176" y2="48"/><line x1="40" y1="120" x2="64" y2="120"/><line x1="40" y1="160" x2="64" y2="160"/><line x1="192" y1="120" x2="216" y2="120"/><line x1="192" y1="160" x2="216" y2="160"/><line x1="128" y1="80" x2="128" y2="32"/></svg></span> 踩坑记录</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。环境配置踩坑、版本冲突、依赖问题等。</p>
     </div>
 
     <!-- 更新日志 -->
     <div class="section" id="section-changelog">
-      <h2 class="section-title">📅 更新日志</h2>
+      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="48" width="192" height="176" rx="8"/><line x1="32" y1="96" x2="224" y2="96"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/></svg></span> 更新日志</h2>
       <div style="border-left: 2px solid var(--accent); padding-left: 16px; margin-bottom: 12px;">
         <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">2026-06-03</div>
         <div style="font-size: 14px; color: var(--text-primary);"><strong>v0.1</strong> · 初始化骨架：4 大分类 + 16 个子分类占位 + TODO 清单</div>
