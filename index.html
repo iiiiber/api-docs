@@ -1231,7 +1231,7 @@ fetch('articles.json?t=' + Date.now())
   .then(data => { KB_DATA = data; renderHome(); })
   .catch(err => {
     document.getElementById('app-content').innerHTML =
-      '<div class="empty-state"><h3' + icon('alert', 28) + '加载失败</h3><p>' + err.message + '</p></div>';
+      '<div class="empty-state"><h3 style="display:flex;align-items:center;gap:8px;">' + icon('alert', 28, '加载失败') + '</h3><p>' + err.message + '</p></div>';
   });
 
 function setActive(cat) {
@@ -1262,8 +1262,8 @@ function articleCardHTML(a) {
     '<h3>' + a.title + '</h3>' +
     '<p>' + a.desc + '</p>' +
     '<div class="meta">' +
-      '<span' + icon('calendar', 14) + '' + a.date + '</span>' +
-      '<span' + icon('folder', 14) + '' + (CAT_NAMES[a.cat] || a.cat) + '</span>' +
+      icon('calendar', 14, a.date) +
+      icon('folder', 14, CAT_NAMES[a.cat] || a.cat) +
       (a.level ? levelBadge(a.level) : '') +
     '</div>' +
   '</div>';
@@ -1280,15 +1280,15 @@ function renderHome() {
       '<strong>综合知识库</strong>' +
     '</nav>' +
     '<div style="margin-bottom: 40px;">' +
-      '<h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;"' + icon('wave', 28) + '欢迎来到综合知识库</h2>' +
+      '<h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px; display:flex;align-items:center;gap:12px;background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">' + icon('wave', 28, '欢迎来到综合知识库') + '</h2>' +
       '<p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8;">鹏飞的个人知识库，跨领域记录：<strong>技术学习 / AI & 量化 / 副业探索 / 工具箱</strong>。</p>' +
       '<div style="display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 32px;">' +
-        '<span style="background:var(--accent-light);color:var(--accent);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;"' + icon('chart', 14) + '共 ' + stats.total + ' 篇文章</span>' +
-        '<span style="background:rgba(16,185,129,0.1);color:var(--success);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;"' + icon('cardbox', 22) + '' + stats.cats + ' 个分类</span>' +
+        '<span style="background:var(--accent-light);color:var(--accent);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">' + icon('chart', 14, '共 ' + stats.total + ' 篇文章') + '</span>' +
+        '<span style="background:rgba(16,185,129,0.1);color:var(--success);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">' + icon('cardbox', 22, stats.cats + ' 个分类') + '</span>' +
         '<span style="background:rgba(245,158,11,0.1);color:var(--warning);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">v0.3 · 2026-06-03</span>' +
       '</div>' +
     '</div>' +
-    '<h2 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: var(--text-primary);"' + icon('cardbox', 22) + '四大分类</h2>' +
+    '<h2 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: var(--text-primary); display:flex;align-items:center;gap:8px;">' + icon('cardbox', 22, '四大分类') + '</h2>' +
     '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;">' +
       KB_DATA.categories.map(function(c) {
         const subCount = KB_DATA.articles.filter(function(a) { return a.cat.indexOf(c.id) === 0; }).length;
@@ -1300,7 +1300,7 @@ function renderHome() {
         '</div>';
       }).join('') +
     '</div>' +
-    '<h2 style="font-size:18px;font-weight:600;margin-bottom:16px;color:var(--text-primary);"' + icon('newspaper', 18) + '最新文章</h2>' +
+    '<h2 style="font-size:18px;font-weight:600;margin-bottom:16px;color:var(--text-primary); display:flex;align-items:center;gap:8px;">' + icon('newspaper', 18, '最新文章') + '</h2>' +
     '<div class="article-list">' +
       KB_DATA.articles.slice().sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 5).map(articleCardHTML).join('') +
     '</div>';
@@ -1358,7 +1358,7 @@ function renderCategory(cat) {
         '<span style="color:var(--accent);">' + icon(CAT_ICONS[cat], 24) + '</span> ' + (CAT_NAMES[cat] || cat) +
       '</h2>' +
       (articles.length === 0 ?
-        '<div class="empty-state"><h3' + icon('mailbox', 28) + '该分类暂无文章</h3><p>在 articles.json 中添加文章后会自动显示</p></div>' :
+        '<div class="empty-state"><h3 style="display:flex;align-items:center;gap:8px;">' + icon('mailbox', 28, '该分类暂无文章') + '</h3><p>在 articles.json 中添加文章后会自动显示</p></div>' :
         '<div class="article-list">' + articles.map(articleCardHTML).join('') + '</div>'
       );
   }
@@ -1386,16 +1386,16 @@ function renderArticle(id) {
     '<h1 style="font-size:28px;font-weight:700;line-height:1.3;margin-bottom:12px;">' + a.title + '</h1>' +
     '<p style="color:var(--text-secondary);font-size:15px;line-height:1.6;margin-bottom:12px;">' + a.desc + '</p>' +
     '<div class="article-meta">' +
-      '<span' + icon('calendar', 14) + '' + a.date + '</span>' +
-      (a.level ? '<span' + icon('chart', 14) + '' + a.level + '</span>' : '') +
-      '<span' + icon('folder', 14) + '<a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;">' + (CAT_NAMES[a.cat] || a.cat) + '</a></span>' +
+      icon('calendar', 14, a.date) +
+      (a.level ? icon('chart', 14, a.level) : '') +
+      icon('folder', 14, '<a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;">' + (CAT_NAMES[a.cat] || a.cat) + '</a>') +
     '</div>' +
     '<div class="article-tags">' + a.tags.map(function(t) { return '<span class="article-tag">#' + t + '</span>'; }).join('') + '</div>' +
     '<div class="article-body">' + a.content + '</div>' +
     '<div style="margin-top:48px;padding:20px;background:var(--bg-secondary);border-radius:var(--radius);text-align:center;">' +
       '<a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;">← 返回 ' + (CAT_NAMES[a.cat] || a.cat) + '</a>' +
       '<span style="margin:0 16px;color:var(--text-muted);">|</span>' +
-      '<a onclick="renderHome()" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;"' + icon('home', 14) + '回首页</a>' +
+      '<a onclick="renderHome()" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:4px;">' + icon('home', 14, '回首页') + '</a>' +
     '</div>';
   document.getElementById('app-content').innerHTML = html;
   // 构建右侧目录
@@ -1407,19 +1407,19 @@ function renderArticle(id) {
 function renderTodo() {
   setActive('todo');
   document.getElementById('app-content').innerHTML = '' +
-    '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);"' + icon('clipboard', 24) + '待完善 TODO</h2>' +
+    '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);display:flex;align-items:center;gap:8px;">' + icon('clipboard', 24, '待完善 TODO') + '</h2>' +
     '<div style="background:var(--bg-secondary);border-radius:var(--radius);padding:24px;">' +
       '<ul style="line-height:2;color:var(--text-secondary);">' +
-        '<li' + icon('check', 14) + '4 分类骨架 + 16 子分类占位</li>' +
-        '<li' + icon('check', 14) + 'SVG 图标体系（51 个 Phosphor 风格）</li>' +
-        '<li' + icon('check', 14) + 'JSON 驱动 SPA 引擎（v0.3）</li>' +
-        '<li' + icon('check', 14) + '5 篇示范文章</li>' +
-        '<li' + icon('memo', 14) + '继续补充文章（按需添加）</li>' +
-        '<li' + icon('moon', 14) + '深色模式（点击 Theme 按钮）</li>' +
-        '<li' + icon('chart', 14) + '文章访问量统计</li>' +
-        '<li' + icon('tag', 14) + '标签云视图</li>' +
-        '<li' + icon('outbox', 14) + '导出为 Markdown / PDF</li>' +
-        '<li' + icon('link', 14) + '单文章 URL 分享</li>' +
+        icon('check', 14, '4 分类骨架 + 16 子分类占位') +
+        icon('check', 14, 'SVG 图标体系（51 个 Phosphor 风格）') +
+        icon('check', 14, 'JSON 驱动 SPA 引擎（v0.3）') +
+        icon('check', 14, '5 篇示范文章') +
+        icon('memo', 14, '继续补充文章（按需添加）') +
+        icon('moon', 14, '深色模式（点击 Theme 按钮）') +
+        icon('chart', 14, '文章访问量统计') +
+        icon('tag', 14, '标签云视图') +
+        icon('outbox', 14, '导出为 Markdown / PDF') +
+        icon('link', 14, '单文章 URL 分享') +
       '</ul>' +
     '</div>';
   window.scrollTo(0, 0);
@@ -1429,7 +1429,7 @@ function renderTodo() {
 function renderChangelog() {
   setActive('changelog');
   document.getElementById('app-content').innerHTML = '' +
-    '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);"' + icon('calendar', 14) + '更新日志</h2>' +
+    '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);display:flex;align-items:center;gap:8px;">' + icon('calendar', 24, '更新日志') + '</h2>' +
     '<div style="border-left:2px solid var(--accent);padding-left:20px;">' +
       '<div style="margin-bottom:20px;">' +
         '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-03</div>' +
@@ -1472,12 +1472,12 @@ function filterDocs(q) {
   });
   if (results.length > 0) {
     document.getElementById('app-content').innerHTML = '' +
-      '<h2 style="font-size:20px;font-weight:600;margin-bottom:20px;color:var(--text-primary);"' + icon('search', 16) + '搜索结果：' + q + ' （' + results.length + ' 篇）</h2>' +
+      '<h2 style="font-size:20px;font-weight:600;margin-bottom:20px;color:var(--text-primary);display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' + icon('search', 16, '搜索结果：' + q + ' （' + results.length + ' 篇）') + '</h2>' +
       '<div class="article-list">' + results.map(articleCardHTML).join('') + '</div>';
   } else {
     document.getElementById('app-content').innerHTML = '' +
       '<div class="empty-state">' +
-        '<h3' + icon('search', 16) + '没找到"' + q + '"相关文章</h3>' +
+        '<h3 style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">' + icon('search', 16, '没找到“' + q + '”相关文章') + '</h3>' +
         '<p>试试别的关键词，或<a onclick="renderHome()" style="color:var(--accent);cursor:pointer;">返回首页</a></p>' +
       '</div>';
   }
