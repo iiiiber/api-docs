@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>API Reference — NovaAPI v2.4</title>
-<meta name="description" content="NovaAPI v2 接口参考文档 - 用户、项目、Webhook、SDK 完整指南。RESTful API、代码示例、错误码速查。">
-<meta name="keywords" content="NovaAPI, API Reference, REST API, 用户管理, Webhook, SDK">
-<meta name="author" content="NovaAPI Team">
-<meta property="og:title" content="NovaAPI v2 — API Reference">
-<meta property="og:description" content="完整 RESTful API 接口文档，支持 JS/Python/Go/Rust 多语言 SDK。">
+<title>综合知识库 · imoons</title>
+<meta name="description" content="鹏飞的个人综合知识库 - 技术学习 / AI & 量化 / 副业探索 / 工具箱，跨领域记录与复盘。">
+<meta name="keywords" content="知识库, 技术, AI, 量化, 副业, Linux, 银河麒麟, OpenClaw, 鹏飞">
+<meta name="author" content="鹏飞 (imoons)">
+<meta property="og:title" content="综合知识库 · imoons">
+<meta property="og:description" content="鹏飞的个人综合知识库 - 技术学习、AI、量化、副业探索、工具箱，跨领域记录与复盘。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://api-docs-51h.pages.dev/">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NovaAPI v2 — API Reference">
-<meta name="twitter:description" content="完整 RESTful API 接口文档">
+<meta name="twitter:title" content="综合知识库 · imoons">
+<meta name="twitter:description" content="鹏飞的个人综合知识库 - 技术、AI、量化、副业、工具">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -826,8 +826,8 @@ body {
     </svg>
   </button>
   <a href="#section-top" class="header-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
-    <div class="logo-icon">N</div>
-    NovaAPI
+    <div class="logo-icon">📚</div>
+    综合知识库
   </a>
   <div class="header-search">
     <span class="search-icon">&#x2315;</span>
@@ -858,72 +858,51 @@ body {
   <!-- Sidebar -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-section">
-      <div class="sidebar-title">入门指南</div>
+      <div class="sidebar-title">📚 知识库首页</div>
       <ul class="sidebar-nav">
-        <li><a href="#">简介</a></li>
-        <li><a href="#">认证方式</a></li>
-        <li><a href="#">请求频率限制</a></li>
-        <li><a href="#">错误码说明</a></li>
+        <li><a href="#section-welcome" class="active">欢迎 & 说明</a></li>
+        <li><a href="#section-todo">待完善 TODO</a></li>
+        <li><a href="#section-changelog">更新日志</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">用户</div>
+      <div class="sidebar-title">🛠️ 技术学习</div>
       <ul class="sidebar-nav">
-        <li><a href="#" class="active">
-          <span class="method-badge get">GET</span>
-          获取用户列表
-        </a></li>
-        <li><a href="#">
-          <span class="method-badge get">GET</span>
-          获取单个用户
-        </a></li>
-        <li><a href="#">
-          <span class="method-badge post">POST</span>
-          创建用户
-        </a></li>
-        <li><a href="#">
-          <span class="method-badge put">PUT</span>
-          更新用户
-        </a></li>
-        <li><a href="#">
-          <span class="method-badge delete">DEL</span>
-          删除用户
-        </a></li>
+        <li><a href="#cat-tech">分类总览</a></li>
+        <li><a href="#cat-tech-1">Linux 命令 & 脚本</a></li>
+        <li><a href="#cat-tech-2">银河麒麟适配</a></li>
+        <li><a href="#cat-tech-3">前端 / 后端笔记</a></li>
+        <li><a href="#cat-tech-4">DevOps & 部署</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">项目</div>
+      <div class="sidebar-title">🤖 AI & 量化</div>
       <ul class="sidebar-nav">
-        <li><a href="#">
-          <span class="method-badge get">GET</span>
-          获取项目列表
-        </a></li>
-        <li><a href="#">
-          <span class="method-badge post">POST</span>
-          创建项目
-        </a></li>
+        <li><a href="#cat-ai">分类总览</a></li>
+        <li><a href="#cat-ai-1">LLM / Prompt 工程</a></li>
+        <li><a href="#cat-ai-2">OpenClaw / Agent</a></li>
+        <li><a href="#cat-ai-3">量化交易</a></li>
+        <li><a href="#cat-ai-4">AI 副业探索</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">Webhook</div>
+      <div class="sidebar-title">💼 副业 & 创业</div>
       <ul class="sidebar-nav">
-        <li><a href="#">
-          <span class="method-badge get">GET</span>
-          获取Webhook列表
-        </a></li>
-        <li><a href="#">
-          <span class="method-badge post">POST</span>
-          创建Webhook
-        </a></li>
+        <li><a href="#cat-biz">分类总览</a></li>
+        <li><a href="#cat-biz-1">选品思路 & 调研</a></li>
+        <li><a href="#cat-biz-2">项目复盘</a></li>
+        <li><a href="#cat-biz-3">流量 & 推广</a></li>
+        <li><a href="#cat-biz-4">变现方法论</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
-      <div class="sidebar-title">SDK</div>
+      <div class="sidebar-title">🔧 工具箱</div>
       <ul class="sidebar-nav">
-        <li><a href="#">JavaScript</a></li>
-        <li><a href="#">Python</a></li>
-        <li><a href="#">Go</a></li>
-        <li><a href="#">Rust</a></li>
+        <li><a href="#cat-tools">分类总览</a></li>
+        <li><a href="#cat-tools-1">常用命令 / 脚本</a></li>
+        <li><a href="#cat-tools-2">在线工具收藏</a></li>
+        <li><a href="#cat-tools-3">效率软件 & 配置</a></li>
+        <li><a href="#cat-tools-4">踩坑记录</a></li>
       </ul>
     </div>
   </aside>
@@ -931,265 +910,151 @@ body {
   <!-- Main -->
   <main class="main">
     <nav class="breadcrumb">
-      <a href="#">文档</a>
+      <a href="#section-welcome">首页</a>
       <span>/</span>
-      <a href="#">用户</a>
-      <span>/</span>
-      <strong>获取用户列表</strong>
+      <strong>综合知识库</strong>
     </nav>
 
-    <div class="endpoint-header">
-      <div class="endpoint-path">
-        <span class="method-label get">GET</span>
-        /v2/users
-      </div>
-      <p class="endpoint-desc">返回组织内所有用户的分页列表，支持按角色、状态、创建时间筛选。</p>
-      <div class="endpoint-meta">
-        <span>&#x1F4C5; 3天前更新</span>
-        <span>&#x270F; 在 GitHub 上编辑</span>
-      </div>
-    </div>
-
-    <!-- Parameters -->
-    <div class="section">
-      <h2 class="section-title" id="section-query-params">查询参数</h2>
-      <table class="params-table">
-        <thead>
-          <tr>
-            <th style="width:200px">Name</th>
-            <th style="width:120px">Type</th>
-            <th style="width:120px">Required</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="param-name">page</span></td>
-            <td><span class="param-type">integer</span></td>
-            <td><span class="param-required">required</span></td>
-            <td>
-              <div class="param-desc">Page number for pagination. Each page returns a maximum of 100 records.</div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="param-name">limit</span></td>
-            <td><span class="param-type">integer</span></td>
-            <td></td>
-            <td>
-              <div class="param-desc">Number of results per page. Default is 20, maximum is 100.</div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="param-name">role</span></td>
-            <td><span class="param-type">string</span></td>
-            <td></td>
-            <td>
-              <div class="param-desc">Filter users by role. Supported values: <code>admin</code>, <code>member</code>, <code>viewer</code>.</div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="param-name">status</span></td>
-            <td><span class="param-type">string</span></td>
-            <td></td>
-            <td>
-              <div class="param-desc">Filter by account status. Options: <code>active</code>, <code>inactive</code>, <code>pending</code>.</div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="param-name">created_after</span></td>
-            <td><span class="param-type">ISO 8601</span></td>
-            <td></td>
-            <td>
-              <div class="param-desc">Return only users created after this timestamp. Example: <code>2024-01-01T00:00:00Z</code></div>
-            </td>
-          </tr>
-          <tr>
-            <td><span class="param-name">sort</span></td>
-            <td><span class="param-type">string</span></td>
-            <td></td>
-            <td>
-              <div class="param-desc">Sort field. Defaults to <code>created_at</code>. Options: <code>name</code>, <code>email</code>, <code>created_at</code>, <code>last_active</code>.</div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <!-- Example Request -->
-    <div class="section">
-      <h2 class="section-title" id="section-example-request">Example Request</h2>
-      <div class="code-block">
-        <div class="code-block-header">
-          <div class="code-block-tabs">
-            <button class="code-tab active" onclick="switchTab(this, 'curl')">cURL</button>
-            <button class="code-tab" onclick="switchTab(this, 'js')">JavaScript</button>
-            <button class="code-tab" onclick="switchTab(this, 'python')">Python</button>
-            <button class="code-tab" onclick="switchTab(this, 'go')">Go</button>
-          </div>
-          <button class="code-copy" onclick="copyCode(this)">Copy</button>
-        </div>
-        <pre id="code-content"><span class="comment"># List users, page 1, filter by active members</span>
-curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role=member&status=active"</span> \
-  -H <span class="str">"Authorization: Bearer YOUR_API_KEY"</span> \
-  -H <span class="str">"Accept: application/json"</span></pre>
+    <!-- 欢迎 -->
+    <div class="section" id="section-welcome">
+      <h2 class="section-title" id="section-top">👋 欢迎来到综合知识库</h2>
+      <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin-bottom: 16px;">
+        这是鹏飞的个人知识库，跨领域记录：<strong>技术学习 / AI & 量化 / 副业探索 / 工具箱</strong>。
+      </p>
+      <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8; margin-bottom: 24px;">
+        框架先用起来，内容逐步补充。每个分类下用 <code>#cat-xxx-n</code> 锚点定位文章，文章用 Markdown 直接写在 HTML 里。
+      </p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;">
+        <span style="background: var(--accent-light); color: var(--accent); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">📝 自用</span>
+        <span style="background: rgba(16,185,129,0.1); color: var(--success); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">🌱 持续完善</span>
+        <span style="background: rgba(245,158,11,0.1); color: var(--warning); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500;">v0.1 · 2026-06-03 初始化</span>
       </div>
     </div>
 
-    <!-- Try It -->
+    <!-- TODO -->
+    <div class="section" id="section-todo">
+      <h2 class="section-title">📋 待完善 TODO</h2>
+      <ul style="color: var(--text-secondary); font-size: 14px; line-height: 2; padding-left: 24px;">
+        <li><input type="checkbox" disabled /> 4 个分类的"分类总览"页面（介绍 + 文章列表）</li>
+        <li><input type="checkbox" disabled /> 4×4 = 16 个子分类的占位文章（先放标题 + 简介）</li>
+        <li><input type="checkbox" disabled /> 搜索功能优化（支持中文分词）</li>
+        <li><input type="checkbox" disabled /> 深色模式切换（点击 Theme 按钮）</li>
+        <li><input type="checkbox" disabled /> 标签云 / 时间线视图</li>
+        <li><input type="checkbox" disabled /> 导出为 Markdown / PDF</li>
+      </ul>
+    </div>
+
+    <!-- 分类总览 -->
     <div class="section">
-      <h2 class="section-title" id="section-try-it">Try It</h2>
-      <div class="tryit-panel">
-        <div class="tryit-header">
-          <div class="tryit-title">
-            <span class="bolt">&#9889;</span>
-            API Playground
+      <h2 class="section-title">🗂️ 四大分类</h2>
+      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
+        点击左侧菜单进入具体子分类。后续随用随加。
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+
+        <!-- 技术学习 -->
+        <a href="#cat-tech" style="text-decoration: none; color: inherit;">
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size: 24px; margin-bottom: 8px;">🛠️</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">技术学习</h3>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">Linux 脚本、银河麒麟适配、前后端笔记、DevOps 部署实战</p>
+            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
           </div>
-          <button class="code-copy" onclick="toggleHeaders(this)">Headers &#9660;</button>
-        </div>
-        <div class="tryit-url-bar">
-          <span class="tryit-method">GET</span>
-          <input class="tryit-url-input" id="tryit-url" type="text" value="https://api.nova.io/v2/users?page=1&limit=20">
-        </div>
-        <div class="tryit-params">
-          <div class="tryit-param-row">
-            <label>page</label>
-            <input type="text" value="1" oninput="updateUrl()" />
+        </a>
+
+        <!-- AI & 量化 -->
+        <a href="#cat-ai" style="text-decoration: none; color: inherit;">
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size: 24px; margin-bottom: 8px;">🤖</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">AI & 量化</h3>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">LLM 应用、Prompt、OpenClaw、量化交易框架、AI 副业</p>
+            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
           </div>
-          <div class="tryit-param-row">
-            <label>limit</label>
-            <input type="text" value="20" oninput="updateUrl()" />
+        </a>
+
+        <!-- 副业 & 创业 -->
+        <a href="#cat-biz" style="text-decoration: none; color: inherit;">
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size: 24px; margin-bottom: 8px;">💼</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">副业 & 创业</h3>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">选品调研、项目复盘、流量方法、变现方法论</p>
+            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
           </div>
-          <div class="tryit-param-row">
-            <label>role</label>
-            <input type="text" placeholder="admin | member | viewer" oninput="updateUrl()" />
+        </a>
+
+        <!-- 工具箱 -->
+        <a href="#cat-tools" style="text-decoration: none; color: inherit;">
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
+            <div style="font-size: 24px; margin-bottom: 8px;">🔧</div>
+            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">工具箱</h3>
+            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">常用命令、在线工具收藏、效率软件、踩坑记录</p>
+            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
           </div>
-          <div class="tryit-param-row">
-            <label>status</label>
-            <input type="text" placeholder="active | inactive | pending" oninput="updateUrl()" />
-          </div>
-        </div>
-        <button class="tryit-send" id="send-btn" onclick="sendRequest()">Send Request</button>
-        <div class="response-status" id="response-status" style="display:none">
-          <span class="status-dot ok" id="status-dot"></span>
-          <span id="status-text">200 OK</span>
-          <span style="margin-left:auto;color:#6c7086" id="response-time">12ms</span>
-        </div>
-        <div class="tryit-response" id="tryit-response"><pre>{
-  <span class="key">"data"</span>: [
-    {
-      <span class="key">"id"</span>: <span class="str">"usr_01hx7k2p3m"</span>,
-      <span class="key">"name"</span>: <span class="str">"Lin Wei"</span>,
-      <span class="key">"email"</span>: <span class="str">"lin@example.com"</span>,
-      <span class="key">"role"</span>: <span class="str">"member"</span>,
-      <span class="key">"status"</span>: <span class="str">"active"</span>,
-      <span class="key">"created_at"</span>: <span class="str">"2024-03-15T09:22:00Z"</span>,
-      <span class="key">"last_active"</span>: <span class="str">"2024-11-28T14:05:33Z"</span>
-    },
-    {
-      <span class="key">"id"</span>: <span class="str">"usr_01hx7k2q4n"</span>,
-      <span class="key">"name"</span>: <span class="str">"Mariam Okafor"</span>,
-      <span class="key">"email"</span>: <span class="str">"mariam@example.com"</span>,
-      <span class="key">"role"</span>: <span class="str">"admin"</span>,
-      <span class="key">"status"</span>: <span class="str">"active"</span>,
-      <span class="key">"created_at"</span>: <span class="str">"2024-05-02T11:44:18Z"</span>,
-      <span class="key">"last_active"</span>: <span class="str">"2024-11-29T08:30:00Z"</span>
-    }
-  ],
-  <span class="key">"pagination"</span>: {
-    <span class="key">"page"</span>: <span class="num">1</span>,
-    <span class="key">"limit"</span>: <span class="num">20</span>,
-    <span class="key">"total"</span>: <span class="num">248</span>,
-    <span class="key">"total_pages"</span>: <span class="num">13</span>,
-    <span class="key">"has_more"</span>: <span class="bool">true</span>
-  }
-}</pre></div>
+        </a>
+
       </div>
     </div>
 
-    <!-- Response Fields -->
-    <div class="section">
-      <h2 class="section-title" id="section-response-fields">Response Fields</h2>
-      <table class="response-fields">
-        <thead>
-          <tr>
-            <th style="width:200px">Field</th>
-            <th style="width:120px">Type</th>
-            <th>Description</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><span class="param-name">data[].id</span></td>
-            <td><span class="param-type">string</span></td>
-            <td><div class="param-desc">Unique user identifier prefixed with <code>usr_</code>.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">data[].name</span></td>
-            <td><span class="param-type">string</span></td>
-            <td><div class="param-desc">Full name of the user.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">data[].email</span></td>
-            <td><span class="param-type">string</span></td>
-            <td><div class="param-desc">Email address. Must be verified before the user can access the API.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">data[].role</span></td>
-            <td><span class="param-type">string</span></td>
-            <td><div class="param-desc">User's role in the organization. One of <code>admin</code>, <code>member</code>, <code>viewer</code>.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">data[].status</span></td>
-            <td><span class="param-type">string</span></td>
-            <td><div class="param-desc">Current account status. Active users can authenticate. Inactive users cannot.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">data[].created_at</span></td>
-            <td><span class="param-type">ISO 8601</span></td>
-            <td><div class="param-desc">Timestamp when the user account was created.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">data[].last_active</span></td>
-            <td><span class="param-type">ISO 8601</span></td>
-            <td><div class="param-desc">Timestamp of the user's most recent API request or dashboard activity.</div></td>
-          </tr>
-          <tr>
-            <td><span class="param-name">pagination</span></td>
-            <td><span class="param-type">object</span></td>
-            <td><div class="param-desc">Pagination metadata object.</div></td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- 分类总览区块（点击左侧菜单时滚动到这里） -->
+    <div class="section" id="cat-tech">
+      <h2 class="section-title">🛠️ 技术学习 · 分类总览</h2>
+      <p style="color: var(--text-secondary); font-size: 14px;">主业相关 + 日常技术积累。</p>
+      <h3 id="cat-tech-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">Linux 命令 & 脚本</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充内容。日常积累的 Linux 命令、bash 脚本、效率技巧。</p>
+      <h3 id="cat-tech-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">银河麒麟适配</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。主业核心：操作系统适配、驱动调试、兼容性测试方法论。</p>
+      <h3 id="cat-tech-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">前端 / 后端笔记</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。HTML/CSS/JS、Node.js、Python、API 设计等笔记。</p>
+      <h3 id="cat-tech-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">DevOps & 部署</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。Cloudflare Pages、GitHub Actions、服务器部署、CI/CD。</p>
     </div>
 
-    <!-- Response Codes -->
-    <div class="section">
-      <h2 class="section-title" id="section-response-codes">Response Codes</h2>
-      <div class="response-codes">
-        <div class="response-code-card">
-          <div class="code ok">200 OK</div>
-          <div class="desc">Request succeeded. Body contains user array and pagination.</div>
-        </div>
-        <div class="response-code-card">
-          <div class="code err">400 Bad Request</div>
-          <div class="desc">Invalid query parameters. Check the <code>message</code> field for details.</div>
-        </div>
-        <div class="response-code-card">
-          <div class="code err">401 Unauthorized</div>
-          <div class="desc">Missing or invalid API key in the Authorization header.</div>
-        </div>
-        <div class="response-code-card">
-          <div class="code warn">403 Forbidden</div>
-          <div class="desc">Your API key does not have permission to list users.</div>
-        </div>
-        <div class="response-code-card">
-          <div class="code warn">429 Too Many Requests</div>
-          <div class="desc">Rate limit exceeded. See the <code>X-RateLimit-Reset</code> header.</div>
-        </div>
-        <div class="response-code-card">
-          <div class="code err">500 Internal Error</div>
-          <div class="desc">Something went wrong on our end. Try again in a few minutes.</div>
-        </div>
+    <div class="section" id="cat-ai">
+      <h2 class="section-title">🤖 AI & 量化 · 分类总览</h2>
+      <p style="color: var(--text-secondary); font-size: 14px;">AI 应用 + 量化交易实战。</p>
+      <h3 id="cat-ai-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">LLM / Prompt 工程</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。Claude、GPT、Gemini 用法，Prompt 设计技巧。</p>
+      <h3 id="cat-ai-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">OpenClaw / Agent</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。OpenClaw 使用、Agent 编排、Skills、Memory 系统。</p>
+      <h3 id="cat-ai-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">量化交易</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。funds.imoons.cn 升级、freqtrade、backtrader、ccxt。</p>
+      <h3 id="cat-ai-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">AI 副业探索</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。AI 工具栈、批量生产、副业 ROI 评估。</p>
+    </div>
+
+    <div class="section" id="cat-biz">
+      <h2 class="section-title">💼 副业 & 创业 · 分类总览</h2>
+      <p style="color: var(--text-secondary); font-size: 14px;">项目选型 + 复盘记录。</p>
+      <h3 id="cat-biz-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">选品思路 & 调研</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。选品框架、市场调研、竞品分析模板。</p>
+      <h3 id="cat-biz-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">项目复盘</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。旧衣回收复盘、快递项目复盘、其他已关停/进行中项目。</p>
+      <h3 id="cat-biz-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">流量 & 推广</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。闲鱼、小红书、视频号等平台玩法。</p>
+      <h3 id="cat-biz-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">变现方法论</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。订阅制、API 计费、广告联盟等变现路径。</p>
+    </div>
+
+    <div class="section" id="cat-tools">
+      <h2 class="section-title">🔧 工具箱 · 分类总览</h2>
+      <p style="color: var(--text-secondary); font-size: 14px;">日常工具 + 踩坑记录。</p>
+      <h3 id="cat-tools-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">常用命令 / 脚本</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。fzf、tmux、ssh、git 等日常必备。</p>
+      <h3 id="cat-tools-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">在线工具收藏</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。JSON 格式化、Base64、UUID 生成、临时邮箱等。</p>
+      <h3 id="cat-tools-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">效率软件 & 配置</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。VSCode、Raycast、uTools、Obsidian 等。</p>
+      <h3 id="cat-tools-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">踩坑记录</h3>
+      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);">📭 待补充。环境配置踩坑、版本冲突、依赖问题等。</p>
+    </div>
+
+    <!-- 更新日志 -->
+    <div class="section" id="section-changelog">
+      <h2 class="section-title">📅 更新日志</h2>
+      <div style="border-left: 2px solid var(--accent); padding-left: 16px; margin-bottom: 12px;">
+        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">2026-06-03</div>
+        <div style="font-size: 14px; color: var(--text-primary);"><strong>v0.1</strong> · 初始化骨架：4 大分类 + 16 个子分类占位 + TODO 清单</div>
       </div>
     </div>
 
