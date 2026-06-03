@@ -838,7 +838,7 @@ body {
       <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
     </svg>
   </button>
-  <a href="#section-top" class="header-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+  <a href="#section-top" class="header-logo" onclick="renderHome();return false;">
     <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 256 256" fill="currentColor"><path d="M232 56H160a40 40 0 0 0-32 16 40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24 8 8 0 0 0 16 0 24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V64a8 8 0 0 0-8-8zM96 184H32V72h64a24 24 0 0 1 24 24v100.31A40 40 0 0 0 96 184zm128 0h-64a40 40 0 0 0-24 7.69V96a24 24 0 0 1 24-24h64v112z"/></svg></div>
     综合知识库
   </a>
@@ -873,205 +873,97 @@ body {
     <div class="sidebar-section">
       <div class="sidebar-title"><span class="sb-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"><path d="M40 216V120l88-72 88 72v96a8 8 0 0 1-8 8H48a8 8 0 0 1-8-8z"/></svg></span> 知识库首页</div>
       <ul class="sidebar-nav">
-        <li><a href="#section-welcome" class="active">欢迎 & 说明</a></li>
-        <li><a href="#section-todo">待完善 TODO</a></li>
-        <li><a href="#section-changelog">更新日志</a></li>
+        <li><a href="javascript:void(0)" onclick="renderHome()" class="active">欢迎 &amp; 说明</a></li>
+        <li><a href="javascript:void(0)" onclick="renderTodo()">待完善 TODO</a></li>
+        <li><a href="javascript:void(0)" onclick="renderChangelog()">更新日志</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48"/><path d="M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49"/><path d="M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17"/><path d="M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48"/></svg></span> 技术学习</div>
       <ul class="sidebar-nav">
-        <li><a href="#cat-tech">分类总览</a></li>
-        <li><a href="#cat-tech-1">Linux 命令 & 脚本</a></li>
-        <li><a href="#cat-tech-2">银河麒麟适配</a></li>
-        <li><a href="#cat-tech-3">前端 / 后端笔记</a></li>
-        <li><a href="#cat-tech-4">DevOps & 部署</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tech')">分类总览</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tech-1')">Linux 命令 &amp; 脚本</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tech-2')">银河麒麟适配</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tech-3')">前端 / 后端笔记</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tech-4')">DevOps &amp; 部署</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></span> AI & 量化</div>
       <ul class="sidebar-nav">
-        <li><a href="#cat-ai">分类总览</a></li>
-        <li><a href="#cat-ai-1">LLM / Prompt 工程</a></li>
-        <li><a href="#cat-ai-2">OpenClaw / Agent</a></li>
-        <li><a href="#cat-ai-3">量化交易</a></li>
-        <li><a href="#cat-ai-4">AI 副业探索</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('ai')">分类总览</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('ai-1')">LLM / Prompt 工程</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('ai-2')">OpenClaw / Agent</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('ai-3')">量化交易</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('ai-4')">AI 副业探索</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="72" width="192" height="144" rx="8"/><path d="M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16"/><line x1="32" y1="136" x2="224" y2="136"/><path d="M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24"/></svg></span> 副业 & 创业</div>
       <ul class="sidebar-nav">
-        <li><a href="#cat-biz">分类总览</a></li>
-        <li><a href="#cat-biz-1">选品思路 & 调研</a></li>
-        <li><a href="#cat-biz-2">项目复盘</a></li>
-        <li><a href="#cat-biz-3">流量 & 推广</a></li>
-        <li><a href="#cat-biz-4">变现方法论</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('biz')">分类总览</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('biz-1')">选品思路 &amp; 调研</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('biz-2')">项目复盘</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('biz-3')">流量 &amp; 推广</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('biz-4')">变现方法论</a></li>
       </ul>
     </div>
     <div class="sidebar-section">
       <div class="sidebar-title"><span class="sb-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/></svg></span> 工具箱</div>
       <ul class="sidebar-nav">
-        <li><a href="#cat-tools">分类总览</a></li>
-        <li><a href="#cat-tools-1">常用命令 / 脚本</a></li>
-        <li><a href="#cat-tools-2">在线工具收藏</a></li>
-        <li><a href="#cat-tools-3">效率软件 & 配置</a></li>
-        <li><a href="#cat-tools-4">踩坑记录</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tools')">分类总览</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tools-1')">常用命令 / 脚本</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tools-2')">在线工具收藏</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tools-3')">效率软件 &amp; 配置</a></li>
+        <li><a href="javascript:void(0)" onclick="renderCategory('tools-4')">踩坑记录</a></li>
       </ul>
     </div>
   </aside>
 
   <!-- Main -->
-  <main class="main">
-    <nav class="breadcrumb">
-      <a href="#section-welcome">首页</a>
-      <span>/</span>
-      <strong>综合知识库</strong>
-    </nav>
-
-    <!-- 欢迎 -->
-    <div class="section" id="section-welcome">
-      <h2 class="section-title" id="section-top"><span class="title-icon" style="color:var(--success);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><polyline points="40 144 96 200 224 72"/></svg></span> 欢迎来到综合知识库</h2>
-      <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8; margin-bottom: 16px;">
-        这是鹏飞的个人知识库，跨领域记录：<strong>技术学习 / AI & 量化 / 副业探索 / 工具箱</strong>。
-      </p>
-      <p style="color: var(--text-secondary); font-size: 14px; line-height: 1.8; margin-bottom: 24px;">
-        框架先用起来，内容逐步补充。每个分类下用 <code>#cat-xxx-n</code> 锚点定位文章，文章用 Markdown 直接写在 HTML 里。
-      </p>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;">
-        <span style="background: var(--accent-light); color: var(--accent); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; display:inline-flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"><polyline points="40 144 96 200 224 72"/></svg> 自用</span>
-        <span style="background: rgba(16,185,129,0.1); color: var(--success); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; display:inline-flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M128 24c32 32 48 80 48 128l-48 48-48-48c0-48 16-96 48-128z"/><circle cx="128" cy="104" r="16"/><line x1="80" y1="160" x2="48" y2="192"/><line x1="176" y1="160" x2="208" y2="192"/></svg> 持续完善</span>
-        <span style="background: rgba(245,158,11,0.1); color: var(--warning); padding: 4px 12px; border-radius: 12px; font-size: 12px; font-weight: 500; display:inline-flex;align-items:center;gap:4px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="216" x2="40" y2="40"/><path d="M40 40h120l-24 40 24 40H40"/></svg> v0.1 · 2026-06-03 初始化</span>
+  <main class="main" id="app-main">
+      <div id="app-content">
+        <div style="padding: 80px 0; text-align: center; color: var(--text-muted);">
+          <div style="display:inline-block;width:32px;height:32px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin 0.8s linear infinite;"></div>
+          <p style="margin-top:16px;">加载知识库中…</p>
+        </div>
       </div>
-    </div>
-
-    <!-- TODO -->
-    <div class="section" id="section-todo">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--warning);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="20" stroke-linecap="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><circle cx="40" cy="64" r="6" fill="currentColor"/><circle cx="40" cy="128" r="6" fill="currentColor"/><circle cx="40" cy="192" r="6" fill="currentColor"/></svg></span> 待完善 TODO</h2>
-      <ul style="color: var(--text-secondary); font-size: 14px; line-height: 2; padding-left: 24px;">
-        <li><input type="checkbox" disabled /> 4 个分类的"分类总览"页面（介绍 + 文章列表）</li>
-        <li><input type="checkbox" disabled /> 4×4 = 16 个子分类的占位文章（先放标题 + 简介）</li>
-        <li><input type="checkbox" disabled /> 搜索功能优化（支持中文分词）</li>
-        <li><input type="checkbox" disabled /> 深色模式切换（点击 Theme 按钮）</li>
-        <li><input type="checkbox" disabled /> 标签云 / 时间线视图</li>
-        <li><input type="checkbox" disabled /> 导出为 Markdown / PDF</li>
-      </ul>
-    </div>
-
-    <!-- 分类总览 -->
-    <div class="section">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="40" width="80" height="80" rx="8"/><rect x="136" y="40" width="80" height="80" rx="8"/><rect x="40" y="136" width="80" height="80" rx="8"/><rect x="136" y="136" width="80" height="80" rx="8"/></svg></span> 四大分类</h2>
-      <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 20px;">
-        点击左侧菜单进入具体子分类。后续随用随加。
-      </p>
-
-      <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-
-        <!-- 技术学习 -->
-        <a href="#cat-tech" style="text-decoration: none; color: inherit;">
-          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48"/><path d="M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49"/><path d="M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17"/><path d="M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48"/></svg></div>
-            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">技术学习</h3>
-            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">Linux 脚本、银河麒麟适配、前后端笔记、DevOps 部署实战</p>
-            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
-          </div>
-        </a>
-
-        <!-- AI & 量化 -->
-        <a href="#cat-ai" style="text-decoration: none; color: inherit;">
-          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></div>
-            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">AI & 量化</h3>
-            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">LLM 应用、Prompt、OpenClaw、量化交易框架、AI 副业</p>
-            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
-          </div>
-        </a>
-
-        <!-- 副业 & 创业 -->
-        <a href="#cat-biz" style="text-decoration: none; color: inherit;">
-          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="72" width="192" height="144" rx="8"/><path d="M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16"/><line x1="32" y1="136" x2="224" y2="136"/><path d="M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24"/></svg></div>
-            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">副业 & 创业</h3>
-            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">选品调研、项目复盘、流量方法、变现方法论</p>
-            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
-          </div>
-        </a>
-
-        <!-- 工具箱 -->
-        <a href="#cat-tools" style="text-decoration: none; color: inherit;">
-          <div style="background: var(--bg-secondary); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer;" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='var(--border)'">
-            <div class="cat-icon-wrap"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/></svg></div>
-            <h3 style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">工具箱</h3>
-            <p style="color: var(--text-secondary); font-size: 13px; line-height: 1.6;">常用命令、在线工具收藏、效率软件、踩坑记录</p>
-            <div style="margin-top: 12px; font-size: 12px; color: var(--text-muted);">4 个子分类</div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-
-    <!-- 分类总览区块（点击左侧菜单时滚动到这里） -->
-    <div class="section" id="cat-tech">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><path d="M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48"/><path d="M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49"/><path d="M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17"/><path d="M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48"/></svg></span> 技术学习 · 分类总览</h2>
-      <p style="color: var(--text-secondary); font-size: 14px;">主业相关 + 日常技术积累。</p>
-      <h3 id="cat-tech-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">Linux 命令 & 脚本</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充内容。日常积累的 Linux 命令、bash 脚本、效率技巧。</p>
-      <h3 id="cat-tech-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="128" r="96"/><path d="M88 168l40-80 40 80"/><line x1="100" y1="148" x2="156" y2="148"/><circle cx="128" cy="100" r="8"/></svg></span> 银河麒麟适配</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。主业核心：操作系统适配、驱动调试、兼容性测试方法论。</p>
-      <h3 id="cat-tech-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><polyline points="92 80 52 128 92 176"/><polyline points="164 80 204 128 164 176"/><line x1="148" y1="64" x2="108" y2="192"/></svg></span> 前端 / 后端笔记</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。HTML/CSS/JS、Node.js、Python、API 设计等笔记。</p>
-      <h3 id="cat-tech-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">DevOps & 部署</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。Cloudflare Pages、GitHub Actions、服务器部署、CI/CD。</p>
-    </div>
-
-    <div class="section" id="cat-ai">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></span> AI & 量化 · 分类总览</h2>
-      <p style="color: var(--text-secondary); font-size: 14px;">AI 应用 + 量化交易实战。</p>
-      <h3 id="cat-ai-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="48" y="48" width="160" height="160" rx="8"/><rect x="84" y="84" width="88" height="88" rx="4"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/><line x1="32" y1="80" x2="64" y2="80"/><line x1="32" y1="128" x2="64" y2="128"/><line x1="32" y1="176" x2="64" y2="176"/><line x1="192" y1="80" x2="224" y2="80"/><line x1="192" y1="128" x2="224" y2="128"/><line x1="192" y1="176" x2="224" y2="176"/></svg></span> LLM / Prompt 工程</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。Claude、GPT、Gemini 用法，Prompt 设计技巧。</p>
-      <h3 id="cat-ai-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="40" y="56" width="176" height="144" rx="16"/><path d="M40 96h176"/><circle cx="128" cy="76" r="4" fill="currentColor"/><line x1="88" y1="136" x2="88.01" y2="136"/><line x1="128" y1="136" x2="128.01" y2="136"/><line x1="168" y1="136" x2="168.01" y2="136"/><line x1="88" y1="168" x2="88.01" y2="168"/><line x1="128" y1="168" x2="128.01" y2="168"/><line x1="168" y1="168" x2="168.01" y2="168"/><path d="M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24"/></svg></span> OpenClaw / Agent</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。OpenClaw 使用、Agent 编排、Skills、Memory 系统。</p>
-      <h3 id="cat-ai-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><line x1="32" y1="200" x2="224" y2="200"/><polyline points="56 160 96 120 136 144 200 80"/><polyline points="168 80 200 80 200 112"/></svg></span> 量化交易</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。funds.imoons.cn 升级、freqtrade、backtrader、ccxt。</p>
-      <h3 id="cat-ai-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M128 64a56 56 0 0 0-32 100v8a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-8a56 56 0 0 0-32-100z"/><line x1="112" y1="200" x2="144" y2="200"/><line x1="112" y1="216" x2="144" y2="216"/></svg></span> AI 副业探索</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。AI 工具栈、批量生产、副业 ROI 评估。</p>
-    </div>
-
-    <div class="section" id="cat-biz">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="72" width="192" height="144" rx="8"/><path d="M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16"/><line x1="32" y1="136" x2="224" y2="136"/><path d="M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24"/></svg></span> 副业 & 创业 · 分类总览</h2>
-      <p style="color: var(--text-secondary); font-size: 14px;">项目选型 + 复盘记录。</p>
-      <h3 id="cat-biz-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">选品思路 & 调研</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。选品框架、市场调研、竞品分析模板。</p>
-      <h3 id="cat-biz-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="216" x2="40" y2="40"/><path d="M40 40h120l-24 40 24 40H40"/></svg></span> 项目复盘</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。旧衣回收复盘、快递项目复盘、其他已关停/进行中项目。</p>
-      <h3 id="cat-biz-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">流量 & 推广</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。闲鱼、小红书、视频号等平台玩法。</p>
-      <h3 id="cat-biz-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="80" width="192" height="96" rx="8"/><circle cx="128" cy="128" r="28"/><circle cx="180" cy="104" r="4" fill="currentColor"/><circle cx="76" cy="152" r="4" fill="currentColor"/></svg></span> 变现方法论</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。订阅制、API 计费、广告联盟等变现路径。</p>
-    </div>
-
-    <div class="section" id="cat-tools">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="20" height="20" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><line x1="40" y1="64" x2="216" y2="64"/><line x1="40" y1="128" x2="216" y2="128"/><line x1="40" y1="192" x2="216" y2="192"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="128" y1="32" x2="128" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/><line x1="80" y1="192" x2="80" y2="224"/><line x1="128" y1="192" x2="128" y2="224"/><line x1="176" y1="192" x2="176" y2="224"/></svg></span> 工具箱 · 分类总览</h2>
-      <p style="color: var(--text-secondary); font-size: 14px;">日常工具 + 踩坑记录。</p>
-      <h3 id="cat-tools-1" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="40" width="192" height="176" rx="8"/><polyline points="80 96 112 128 80 160"/><line x1="120" y1="160" x2="160" y2="160"/></svg></span> 常用命令 / 脚本</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。fzf、tmux、ssh、git 等日常必备。</p>
-      <h3 id="cat-tools-2" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><circle cx="128" cy="128" r="96"/><ellipse cx="128" cy="128" rx="40" ry="96"/><line x1="32" y1="128" x2="224" y2="128"/></svg></span> 在线工具收藏</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。JSON 格式化、Base64、UUID 生成、临时邮箱等。</p>
-      <h3 id="cat-tools-3" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;">效率软件 & 配置</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。VSCode、Raycast、uTools、Obsidian 等。</p>
-      <h3 id="cat-tools-4" style="font-size: 14px; color: var(--accent); margin-top: 20px; margin-bottom: 8px;"><span class="sub-icon"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="64" y="80" width="128" height="144" rx="8"/><line x1="80" y1="80" x2="80" y2="48"/><line x1="176" y1="80" x2="176" y2="48"/><line x1="40" y1="120" x2="64" y2="120"/><line x1="40" y1="160" x2="64" y2="160"/><line x1="192" y1="120" x2="216" y2="120"/><line x1="192" y1="160" x2="216" y2="160"/><line x1="128" y1="80" x2="128" y2="32"/></svg></span> 踩坑记录</h3>
-      <p style="color: var(--text-muted); font-size: 13px; padding-left: 16px; border-left: 2px solid var(--border);"><span class="pending-icon" style="color:var(--text-muted);vertical-align:-2px;"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><path d="M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86"/><path d="M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z"/></svg></span> 待补充。环境配置踩坑、版本冲突、依赖问题等。</p>
-    </div>
-
-    <!-- 更新日志 -->
-    <div class="section" id="section-changelog">
-      <h2 class="section-title"><span class="title-icon" style="color:var(--accent);"><svg width="14" height="14" viewBox="0 0 256 256" fill="none" stroke="currentColor" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"><rect x="32" y="48" width="192" height="176" rx="8"/><line x1="32" y1="96" x2="224" y2="96"/><line x1="80" y1="32" x2="80" y2="64"/><line x1="176" y1="32" x2="176" y2="64"/></svg></span> 更新日志</h2>
-      <div style="border-left: 2px solid var(--accent); padding-left: 16px; margin-bottom: 12px;">
-        <div style="font-size: 13px; color: var(--text-muted); margin-bottom: 4px;">2026-06-03</div>
-        <div style="font-size: 14px; color: var(--text-primary);"><strong>v0.1</strong> · 初始化骨架：4 大分类 + 16 个子分类占位 + TODO 清单</div>
-      </div>
-    </div>
-
-  </main>
+    </main>
+    <style>
+      @keyframes spin { to { transform: rotate(360deg); } }
+      .article-meta { display: flex; gap: 12px; flex-wrap: wrap; color: var(--text-muted); font-size: 13px; margin: 12px 0 24px; }
+      .article-meta span { display: inline-flex; align-items: center; gap: 4px; }
+      .article-body { line-height: 1.8; color: var(--text-primary); font-size: 15px; }
+      .article-body h2 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+      .article-body h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; color: var(--accent); }
+      .article-body p { margin: 12px 0; }
+      .article-body ul, .article-body ol { padding-left: 24px; margin: 12px 0; }
+      .article-body li { margin: 6px 0; }
+      .article-body code { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+      .article-body pre { background: var(--bg-code); color: #cdd6f4; padding: 16px; border-radius: var(--radius); overflow-x: auto; margin: 16px 0; font-size: 13px; line-height: 1.6; }
+      .article-body pre code { background: none; color: inherit; padding: 0; }
+      .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+      .article-body th { text-align: left; background: var(--bg-secondary); padding: 8px 12px; border: 1px solid var(--border); }
+      .article-body td { padding: 8px 12px; border: 1px solid var(--border); vertical-align: top; }
+      .article-body a { color: var(--accent); text-decoration: none; }
+      .article-body a:hover { text-decoration: underline; }
+      .article-body blockquote { border-left: 3px solid var(--accent); padding-left: 16px; color: var(--text-secondary); margin: 16px 0; }
+      .article-tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
+      .article-tag { background: var(--bg-secondary); color: var(--text-secondary); padding: 3px 10px; border-radius: 12px; font-size: 12px; }
+      .article-list { display: flex; flex-direction: column; gap: 12px; }
+      .article-card { background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; transition: all 0.15s; cursor: pointer; }
+      .article-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+      .article-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 6px; color: var(--text-primary); }
+      .article-card p { color: var(--text-secondary); font-size: 13px; line-height: 1.6; margin-bottom: 12px; }
+      .article-card .meta { display: flex; gap: 12px; font-size: 12px; color: var(--text-muted); flex-wrap: wrap; }
+      .empty-state { padding: 60px 20px; text-align: center; color: var(--text-muted); }
+      .empty-state h3 { font-size: 16px; margin-bottom: 8px; color: var(--text-secondary); }
+      .breadcrumb-nav { display: flex; align-items: center; gap: 8px; color: var(--text-muted); font-size: 13px; margin-bottom: 20px; flex-wrap: wrap; }
+      .breadcrumb-nav a { color: var(--text-muted); text-decoration: none; cursor: pointer; }
+      .breadcrumb-nav a:hover { color: var(--accent); }
+      .breadcrumb-nav span { color: var(--text-muted); }
+      .breadcrumb-nav strong { color: var(--text-primary); font-weight: 500; }
+    </style>
 
   <!-- On This Page -->
   <aside class="on-this-page">
@@ -1241,5 +1133,278 @@ function sendRequest() {
     });
 }
 </script>
+
+<script>
+// ===== SPA 引擎 (v0.3) =====
+let KB_DATA = null;
+const SVG_ICON_LIB = {"tech": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"14\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M125.66 138.34l-8.49 8.48a8 8 0 0 1-11.31 0L70.34 111.31a8 8 0 0 1 0-11.32l8.49-8.48\"/><path d=\"M98.83 165.17l-8.49 8.48a8 8 0 0 1-11.31 0L43.51 138.14a8 8 0 0 1 0-11.32l50.34-50.34a8 8 0 0 1 11.32 0l35.51 35.52a8 8 0 0 1 0 11.31l-8.49 8.49\"/><path d=\"M130.34 130.34l45.26 45.25a8 8 0 0 1 0 11.32l-35.52 35.51a8 8 0 0 1-11.31 0L93.51 177.17\"/><path d=\"M157.17 98.83l8.49-8.49a8 8 0 0 1 11.31 0l35.52 35.52a8 8 0 0 1 0 11.31l-50.34 50.34a8 8 0 0 1-11.32 0l-35.51-35.51a8 8 0 0 1 0-11.32l8.48-8.48\"/></svg>", "ai": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"14\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"40\" y=\"56\" width=\"176\" height=\"144\" rx=\"16\"/><path d=\"M40 96h176\"/><circle cx=\"128\" cy=\"76\" r=\"4\" fill=\"currentColor\"/><line x1=\"88\" y1=\"136\" x2=\"88.01\" y2=\"136\"/><line x1=\"128\" y1=\"136\" x2=\"128.01\" y2=\"136\"/><line x1=\"168\" y1=\"136\" x2=\"168.01\" y2=\"136\"/><line x1=\"88\" y1=\"168\" x2=\"88.01\" y2=\"168\"/><line x1=\"128\" y1=\"168\" x2=\"128.01\" y2=\"168\"/><line x1=\"168\" y1=\"168\" x2=\"168.01\" y2=\"168\"/><path d=\"M100 56V32a8 8 0 0 1 8-8h40a8 8 0 0 1 8 8v24\"/></svg>", "biz": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"14\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"32\" y=\"72\" width=\"192\" height=\"144\" rx=\"8\"/><path d=\"M168 72V56a16 16 0 0 0-16-16H104a16 16 0 0 0-16 16v16\"/><line x1=\"32\" y1=\"136\" x2=\"224\" y2=\"136\"/><path d=\"M104 136v24a8 8 0 0 1-8 8H80a8 8 0 0 1-8-8v-24\"/></svg>", "tools": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"14\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"40\" y1=\"64\" x2=\"216\" y2=\"64\"/><line x1=\"40\" y1=\"128\" x2=\"216\" y2=\"128\"/><line x1=\"40\" y1=\"192\" x2=\"216\" y2=\"192\"/><line x1=\"80\" y1=\"32\" x2=\"80\" y2=\"64\"/><line x1=\"128\" y1=\"32\" x2=\"128\" y2=\"64\"/><line x1=\"176\" y1=\"32\" x2=\"176\" y2=\"64\"/><line x1=\"80\" y1=\"192\" x2=\"80\" y2=\"224\"/><line x1=\"128\" y1=\"192\" x2=\"128\" y2=\"224\"/><line x1=\"176\" y1=\"192\" x2=\"176\" y2=\"224\"/></svg>", "logo": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 256 256\" fill=\"currentColor\"><path d=\"M232 56H160a40 40 0 0 0-32 16 40 40 0 0 0-32-16H24a8 8 0 0 0-8 8v128a8 8 0 0 0 8 8h72a24 24 0 0 1 24 24 8 8 0 0 0 16 0 24 24 0 0 1 24-24h72a8 8 0 0 0 8-8V64a8 8 0 0 0-8-8zM96 184H32V72h64a24 24 0 0 1 24 24v100.31A40 40 0 0 0 96 184zm128 0h-64a40 40 0 0 0-24 7.69V96a24 24 0 0 1 24-24h64v112z\"/></svg>", "home": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"20\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M40 216V120l88-72 88 72v96a8 8 0 0 1-8 8H48a8 8 0 0 1-8-8z\"/></svg>", "list": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"20\" stroke-linecap=\"round\"><line x1=\"40\" y1=\"64\" x2=\"216\" y2=\"64\"/><line x1=\"40\" y1=\"128\" x2=\"216\" y2=\"128\"/><line x1=\"40\" y1=\"192\" x2=\"216\" y2=\"192\"/><circle cx=\"40\" cy=\"64\" r=\"6\" fill=\"currentColor\"/><circle cx=\"40\" cy=\"128\" r=\"6\" fill=\"currentColor\"/><circle cx=\"40\" cy=\"192\" r=\"6\" fill=\"currentColor\"/></svg>", "calendar": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"32\" y=\"48\" width=\"192\" height=\"176\" rx=\"8\"/><line x1=\"32\" y1=\"96\" x2=\"224\" y2=\"96\"/><line x1=\"80\" y1=\"32\" x2=\"80\" y2=\"64\"/><line x1=\"176\" y1=\"32\" x2=\"176\" y2=\"64\"/></svg>", "wrench": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M132.66 141.66l-50.86 50.86a8 8 0 0 1-11.31 0L34.34 156.4a8 8 0 0 1 0-11.31l50.86-50.86\"/><path d=\"M95.49 178.83l50.86-50.86a40 40 0 1 0-56.55-56.55L39 121.28a40 40 0 0 0 56.55 56.55z\"/></svg>", "target": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"128\" cy=\"128\" r=\"96\"/><circle cx=\"128\" cy=\"128\" r=\"56\"/><circle cx=\"128\" cy=\"128\" r=\"24\"/></svg>", "package": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M40 64l88-40 88 40v128l-88 40-88-40V64z\"/><path d=\"M40 64l88 40 88-40\"/><line x1=\"128\" y1=\"104\" x2=\"128\" y2=\"216\"/></svg>", "terminal": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"32\" y=\"40\" width=\"192\" height=\"176\" rx=\"8\"/><polyline points=\"80 96 112 128 80 160\"/><line x1=\"120\" y1=\"160\" x2=\"160\" y2=\"160\"/></svg>", "kylin": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"128\" cy=\"128\" r=\"96\"/><path d=\"M88 168l40-80 40 80\"/><line x1=\"100\" y1=\"148\" x2=\"156\" y2=\"148\"/><circle cx=\"128\" cy=\"100\" r=\"8\"/></svg>", "code": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"92 80 52 128 92 176\"/><polyline points=\"164 80 204 128 164 176\"/><line x1=\"148\" y1=\"64\" x2=\"108\" y2=\"192\"/></svg>", "cloud": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M80 192a48 48 0 0 1-8-95.1A64 64 0 0 1 192 96a40 40 0 0 1 0 80H80z\"/></svg>", "cpu": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"48\" y=\"48\" width=\"160\" height=\"160\" rx=\"8\"/><rect x=\"84\" y=\"84\" width=\"88\" height=\"88\" rx=\"4\"/><line x1=\"80\" y1=\"32\" x2=\"80\" y2=\"64\"/><line x1=\"128\" y1=\"32\" x2=\"128\" y2=\"64\"/><line x1=\"176\" y1=\"32\" x2=\"176\" y2=\"64\"/><line x1=\"80\" y1=\"192\" x2=\"80\" y2=\"224\"/><line x1=\"128\" y1=\"192\" x2=\"128\" y2=\"224\"/><line x1=\"176\" y1=\"192\" x2=\"176\" y2=\"224\"/><line x1=\"32\" y1=\"80\" x2=\"64\" y2=\"80\"/><line x1=\"32\" y1=\"128\" x2=\"64\" y2=\"128\"/><line x1=\"32\" y1=\"176\" x2=\"64\" y2=\"176\"/><line x1=\"192\" y1=\"80\" x2=\"224\" y2=\"80\"/><line x1=\"192\" y1=\"128\" x2=\"224\" y2=\"128\"/><line x1=\"192\" y1=\"176\" x2=\"224\" y2=\"176\"/></svg>", "chart": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"32\" y1=\"200\" x2=\"224\" y2=\"200\"/><polyline points=\"56 160 96 120 136 144 200 80\"/><polyline points=\"168 80 200 80 200 112\"/></svg>", "lightbulb": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M128 64a56 56 0 0 0-32 100v8a8 8 0 0 0 8 8h48a8 8 0 0 0 8-8v-8a56 56 0 0 0-32-100z\"/><line x1=\"112\" y1=\"200\" x2=\"144\" y2=\"200\"/><line x1=\"112\" y1=\"216\" x2=\"144\" y2=\"216\"/></svg>", "trending": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"200 56 200 120 136 120\"/><polyline points=\"56 200 56 136 120 136\"/><line x1=\"200\" y1=\"56\" x2=\"120\" y2=\"136\"/><line x1=\"56\" y1=\"200\" x2=\"136\" y2=\"120\"/></svg>", "cash": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"32\" y=\"80\" width=\"192\" height=\"96\" rx=\"8\"/><circle cx=\"128\" cy=\"128\" r=\"28\"/><circle cx=\"180\" cy=\"104\" r=\"4\" fill=\"currentColor\"/><circle cx=\"76\" cy=\"152\" r=\"4\" fill=\"currentColor\"/></svg>", "globe": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"128\" cy=\"128\" r=\"96\"/><ellipse cx=\"128\" cy=\"128\" rx=\"40\" ry=\"96\"/><line x1=\"32\" y1=\"128\" x2=\"224\" y2=\"128\"/></svg>", "app": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"40\" y=\"40\" width=\"80\" height=\"80\" rx=\"8\"/><rect x=\"136\" y=\"40\" width=\"80\" height=\"80\" rx=\"8\"/><rect x=\"40\" y=\"136\" width=\"80\" height=\"80\" rx=\"8\"/><rect x=\"136\" y=\"136\" width=\"80\" height=\"80\" rx=\"8\"/></svg>", "bug": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"64\" y=\"80\" width=\"128\" height=\"144\" rx=\"8\"/><line x1=\"80\" y1=\"80\" x2=\"80\" y2=\"48\"/><line x1=\"176\" y1=\"80\" x2=\"176\" y2=\"48\"/><line x1=\"40\" y1=\"120\" x2=\"64\" y2=\"120\"/><line x1=\"40\" y1=\"160\" x2=\"64\" y2=\"160\"/><line x1=\"192\" y1=\"120\" x2=\"216\" y2=\"120\"/><line x1=\"192\" y1=\"160\" x2=\"216\" y2=\"160\"/><line x1=\"128\" y1=\"80\" x2=\"128\" y2=\"32\"/></svg>", "check": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"22\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"40 144 96 200 224 72\"/></svg>", "flag": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"40\" y1=\"216\" x2=\"40\" y2=\"40\"/><path d=\"M40 40h120l-24 40 24 40H40\"/></svg>", "rocket": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 256 256\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"18\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M128 24c32 32 48 80 48 128l-48 48-48-48c0-48 16-96 48-128z\"/><circle cx=\"128\" cy=\"104\" r=\"16\"/><line x1=\"80\" y1=\"160\" x2=\"48\" y2=\"192\"/><line x1=\"176\" y1=\"160\" x2=\"208\" y2=\"192\"/></svg>"};
+
+const CAT_NAMES = {
+  'tech': '技术学习', 'ai': 'AI & 量化', 'biz': '副业 & 创业', 'tools': '工具箱',
+  'tech-1': 'Linux 命令 & 脚本', 'tech-2': '银河麒麟适配', 'tech-3': '前端 / 后端笔记', 'tech-4': 'DevOps & 部署',
+  'ai-1': 'LLM / Prompt 工程', 'ai-2': 'OpenClaw / Agent', 'ai-3': '量化交易', 'ai-4': 'AI 副业探索',
+  'biz-1': '选品思路 & 调研', 'biz-2': '项目复盘', 'biz-3': '流量 & 推广', 'biz-4': '变现方法论',
+  'tools-1': '常用命令 / 脚本', 'tools-2': '在线工具收藏', 'tools-3': '效率软件 & 配置', 'tools-4': '踩坑记录'
+};
+
+const CAT_ICONS = {
+  'tech': 'tech', 'ai': 'ai', 'biz': 'biz', 'tools': 'tools',
+  'tech-1': 'terminal', 'tech-2': 'kylin', 'tech-3': 'code', 'tech-4': 'cloud',
+  'ai-1': 'cpu', 'ai-2': 'ai', 'ai-3': 'chart', 'ai-4': 'lightbulb',
+  'biz-1': 'target', 'biz-2': 'flag', 'biz-3': 'trending', 'biz-4': 'cash',
+  'tools-1': 'terminal', 'tools-2': 'globe', 'tools-3': 'app', 'tools-4': 'bug'
+};
+
+// 加载数据
+fetch('articles.json?t=' + Date.now())
+  .then(r => r.json())
+  .then(data => { KB_DATA = data; renderHome(); })
+  .catch(err => {
+    document.getElementById('app-content').innerHTML =
+      '<div class="empty-state"><h3>⚠️ 加载失败</h3><p>' + err.message + '</p></div>';
+  });
+
+function setActive(cat) {
+  document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
+  if (cat) {
+    document.querySelectorAll('.sidebar-nav a[onclick*="' + cat + '"]').forEach(a => a.classList.add('active'));
+  }
+}
+
+function icon(name, size) {
+  const svg = SVG_ICON_LIB[name] || SVG_ICON_LIB['wrench'] || '';
+  if (!svg) return '';
+  size = size || 14;
+  return svg.replace(/width="\d+"/, 'width="' + size + '"')
+             .replace(/height="\d+"/, 'height="' + size + '"');
+}
+
+function levelBadge(level) {
+  const colors = { '入门': '16,185,129', '中级': '245,158,11', '高级': '239,68,68' };
+  const c = colors[level] || '107,114,128';
+  return '<span style="background:rgba(' + c + ',0.1);color:rgb(' + c + ');padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500;">' + level + '</span>';
+}
+
+function articleCardHTML(a) {
+  return '<div class="article-card" onclick="renderArticle(\'' + a.id + '\')">' +
+    '<h3>' + a.title + '</h3>' +
+    '<p>' + a.desc + '</p>' +
+    '<div class="meta">' +
+      '<span>📅 ' + a.date + '</span>' +
+      '<span>📁 ' + (CAT_NAMES[a.cat] || a.cat) + '</span>' +
+      (a.level ? levelBadge(a.level) : '') +
+    '</div>' +
+  '</div>';
+}
+
+function renderHome() {
+  setActive('home');
+  if (!KB_DATA) return;
+  const stats = { total: KB_DATA.articles.length, cats: KB_DATA.categories.length };
+  const html = '' +
+    '<nav class="breadcrumb-nav">' +
+      '<a onclick="renderHome()">首页</a>' +
+      '<span>/</span>' +
+      '<strong>综合知识库</strong>' +
+    '</nav>' +
+    '<div style="margin-bottom: 40px;">' +
+      '<h2 style="font-size: 28px; font-weight: 700; margin-bottom: 12px; background: linear-gradient(135deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">👋 欢迎来到综合知识库</h2>' +
+      '<p style="color: var(--text-secondary); font-size: 15px; line-height: 1.8;">鹏飞的个人知识库，跨领域记录：<strong>技术学习 / AI & 量化 / 副业探索 / 工具箱</strong>。</p>' +
+      '<div style="display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 32px;">' +
+        '<span style="background:var(--accent-light);color:var(--accent);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">📊 共 ' + stats.total + ' 篇文章</span>' +
+        '<span style="background:rgba(16,185,129,0.1);color:var(--success);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">🗂️ ' + stats.cats + ' 个分类</span>' +
+        '<span style="background:rgba(245,158,11,0.1);color:var(--warning);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">v0.3 · 2026-06-03</span>' +
+      '</div>' +
+    '</div>' +
+    '<h2 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: var(--text-primary);">🗂️ 四大分类</h2>' +
+    '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:48px;">' +
+      KB_DATA.categories.map(function(c) {
+        const subCount = KB_DATA.articles.filter(function(a) { return a.cat.indexOf(c.id) === 0; }).length;
+        return '<div onclick="renderCategory(\'' + c.id + '\')" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:all 0.15s;cursor:pointer;" onmouseover="this.style.borderColor=\'var(--accent)\';this.style.transform=\'translateY(-2px)\'" onmouseout="this.style.borderColor=\'var(--border)\';this.style.transform=\'translateY(0)\'">' +
+          '<div style="margin-bottom:12px;color:var(--accent);">' + icon(c.icon, 32) + '</div>' +
+          '<h3 style="font-size:16px;font-weight:600;margin-bottom:6px;">' + c.name + '</h3>' +
+          '<p style="color:var(--text-secondary);font-size:13px;line-height:1.6;">' + c.desc + '</p>' +
+          '<div style="margin-top:12px;font-size:12px;color:var(--text-muted);">' + subCount + ' 篇文章</div>' +
+        '</div>';
+      }).join('') +
+    '</div>' +
+    '<h2 style="font-size:18px;font-weight:600;margin-bottom:16px;color:var(--text-primary);">📰 最新文章</h2>' +
+    '<div class="article-list">' +
+      KB_DATA.articles.slice().sort(function(a,b) { return b.date.localeCompare(a.date); }).slice(0, 5).map(articleCardHTML).join('') +
+    '</div>';
+  document.getElementById('app-content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function renderCategory(cat) {
+  setActive(cat);
+  if (!KB_DATA) return;
+  const isMainCat = ['tech', 'ai', 'biz', 'tools'].indexOf(cat) >= 0;
+  let html = '';
+  if (isMainCat) {
+    const subs = {};
+    KB_DATA.articles.forEach(function(a) {
+      if (a.cat.indexOf(cat + '-') === 0) {
+        if (!subs[a.cat]) subs[a.cat] = [];
+        subs[a.cat].push(a);
+      }
+    });
+    const subKeys = Object.keys(subs).sort();
+    const catInfo = KB_DATA.categories.find(function(c) { return c.id === cat; });
+    html = '' +
+      '<nav class="breadcrumb-nav">' +
+        '<a onclick="renderHome()">首页</a>' +
+        '<span>/</span>' +
+        '<strong>' + (catInfo ? catInfo.name : cat) + '</strong>' +
+      '</nav>' +
+      '<h2 style="font-size:24px;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:8px;color:var(--text-primary);">' +
+        '<span style="color:var(--accent);">' + icon(CAT_ICONS[cat], 24) + '</span> ' + (catInfo ? catInfo.name : cat) + ' · 分类总览' +
+      '</h2>' +
+      '<p style="color:var(--text-secondary);font-size:14px;margin-bottom:32px;">' + (catInfo ? catInfo.desc : '') + '</p>' +
+      subKeys.map(function(sub) {
+        return '<div style="margin-bottom:32px;">' +
+          '<h3 onclick="renderCategory(\'' + sub + '\')" style="font-size:16px;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:6px;cursor:pointer;">' +
+            '<span style="color:var(--accent);">' + icon(CAT_ICONS[sub], 16) + '</span> ' + (CAT_NAMES[sub] || sub) +
+            ' <span style="color:var(--text-muted);font-size:12px;font-weight:400;">(' + subs[sub].length + ' 篇)</span>' +
+          '</h3>' +
+          '<div class="article-list">' + subs[sub].map(articleCardHTML).join('') + '</div>' +
+        '</div>';
+      }).join('');
+  } else {
+    const articles = KB_DATA.articles.filter(function(a) { return a.cat === cat; });
+    const mainCat = cat.split('-')[0];
+    html = '' +
+      '<nav class="breadcrumb-nav">' +
+        '<a onclick="renderHome()">首页</a>' +
+        '<span>/</span>' +
+        '<a onclick="renderCategory(\'' + mainCat + '\')">' + (CAT_NAMES[mainCat] || mainCat) + '</a>' +
+        '<span>/</span>' +
+        '<strong>' + (CAT_NAMES[cat] || cat) + '</strong>' +
+      '</nav>' +
+      '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;display:flex;align-items:center;gap:8px;color:var(--text-primary);">' +
+        '<span style="color:var(--accent);">' + icon(CAT_ICONS[cat], 24) + '</span> ' + (CAT_NAMES[cat] || cat) +
+      '</h2>' +
+      (articles.length === 0 ?
+        '<div class="empty-state"><h3>📭 该分类暂无文章</h3><p>在 articles.json 中添加文章后会自动显示</p></div>' :
+        '<div class="article-list">' + articles.map(articleCardHTML).join('') + '</div>'
+      );
+  }
+  document.getElementById('app-content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function renderArticle(id) {
+  if (!KB_DATA) return;
+  const a = KB_DATA.articles.find(function(x) { return x.id === id; });
+  if (!a) return renderHome();
+  setActive(a.cat);
+  const mainCat = a.cat.split('-')[0];
+  const html = '' +
+    '<nav class="breadcrumb-nav">' +
+      '<a onclick="renderHome()">首页</a>' +
+      '<span>/</span>' +
+      '<a onclick="renderCategory(\'' + mainCat + '\')">' + (CAT_NAMES[mainCat] || mainCat) + '</a>' +
+      '<span>/</span>' +
+      '<a onclick="renderCategory(\'' + a.cat + '\')">' + (CAT_NAMES[a.cat] || a.cat) + '</a>' +
+      '<span>/</span>' +
+      '<strong>' + a.title + '</strong>' +
+    '</nav>' +
+    '<h1 style="font-size:28px;font-weight:700;line-height:1.3;margin-bottom:12px;">' + a.title + '</h1>' +
+    '<p style="color:var(--text-secondary);font-size:15px;line-height:1.6;margin-bottom:12px;">' + a.desc + '</p>' +
+    '<div class="article-meta">' +
+      '<span>📅 ' + a.date + '</span>' +
+      (a.level ? '<span>📊 ' + a.level + '</span>' : '') +
+      '<span>📁 <a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;">' + (CAT_NAMES[a.cat] || a.cat) + '</a></span>' +
+    '</div>' +
+    '<div class="article-tags">' + a.tags.map(function(t) { return '<span class="article-tag">#' + t + '</span>'; }).join('') + '</div>' +
+    '<div class="article-body">' + a.content + '</div>' +
+    '<div style="margin-top:48px;padding:20px;background:var(--bg-secondary);border-radius:var(--radius);text-align:center;">' +
+      '<a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;">← 返回 ' + (CAT_NAMES[a.cat] || a.cat) + '</a>' +
+      '<span style="margin:0 16px;color:var(--text-muted);">|</span>' +
+      '<a onclick="renderHome()" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;">🏠 回首页</a>' +
+    '</div>';
+  document.getElementById('app-content').innerHTML = html;
+  window.scrollTo(0, 0);
+}
+
+function renderTodo() {
+  setActive('todo');
+  document.getElementById('app-content').innerHTML = '' +
+    '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);">📋 待完善 TODO</h2>' +
+    '<div style="background:var(--bg-secondary);border-radius:var(--radius);padding:24px;">' +
+      '<ul style="line-height:2;color:var(--text-secondary);">' +
+        '<li>✅ 4 分类骨架 + 16 子分类占位</li>' +
+        '<li>✅ SVG 图标体系（51 个 Phosphor 风格）</li>' +
+        '<li>✅ JSON 驱动 SPA 引擎（v0.3）</li>' +
+        '<li>✅ 5 篇示范文章</li>' +
+        '<li>📝 继续补充文章（按需添加）</li>' +
+        '<li>🌗 深色模式（点击 Theme 按钮）</li>' +
+        '<li>📊 文章访问量统计</li>' +
+        '<li>🏷️ 标签云视图</li>' +
+        '<li>📤 导出为 Markdown / PDF</li>' +
+        '<li>🔗 单文章 URL 分享</li>' +
+      '</ul>' +
+    '</div>';
+  window.scrollTo(0, 0);
+}
+
+function renderChangelog() {
+  setActive('changelog');
+  document.getElementById('app-content').innerHTML = '' +
+    '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);">📅 更新日志</h2>' +
+    '<div style="border-left:2px solid var(--accent);padding-left:20px;">' +
+      '<div style="margin-bottom:20px;">' +
+        '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-03</div>' +
+        '<div style="font-size:15px;font-weight:600;margin-bottom:4px;">v0.3 · JSON 驱动 SPA 引擎</div>' +
+        '<p style="color:var(--text-secondary);font-size:14px;line-height:1.8;">从静态 HTML 升级为 JSON 数据驱动，5 篇示范文章，支持侧边栏点击渲染对应视图。</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-03</div>' +
+        '<div style="font-size:15px;font-weight:600;margin-bottom:4px;">v0.2 · 全量 SVG 图标</div>' +
+        '<p style="color:var(--text-secondary);font-size:14px;line-height:1.8;">51 个 Phosphor 风格 SVG 图标替换全部 emoji。</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-03</div>' +
+        '<div style="font-size:15px;font-weight:600;margin-bottom:4px;">v0.1 · 综合知识库骨架</div>' +
+        '<p style="color:var(--text-secondary);font-size:14px;line-height:1.8;">4 大分类 + 16 子分类 + TODO 清单 + 更新日志。</p>' +
+      '</div>' +
+    '</div>';
+  window.scrollTo(0, 0);
+}
+
+function filterDocs(q) {
+  q = (q || '').trim().toLowerCase();
+  document.querySelectorAll('.sidebar-section').forEach(function(sec) {
+    let sectionHasMatch = false;
+    sec.querySelectorAll('li').forEach(function(li) {
+      if (!q || li.textContent.toLowerCase().indexOf(q) >= 0) {
+        li.style.display = '';
+        sectionHasMatch = true;
+      } else {
+        li.style.display = 'none';
+      }
+    });
+    sec.style.display = (q && !sectionHasMatch) ? 'none' : '';
+  });
+  if (!q || !KB_DATA) return;
+  const results = KB_DATA.articles.filter(function(a) {
+    const text = (a.title + ' ' + a.desc + ' ' + a.tags.join(' ') + ' ' + (a.content || '')).toLowerCase();
+    return text.indexOf(q) >= 0;
+  });
+  if (results.length > 0) {
+    document.getElementById('app-content').innerHTML = '' +
+      '<h2 style="font-size:20px;font-weight:600;margin-bottom:20px;color:var(--text-primary);">🔍 搜索结果：' + q + ' （' + results.length + ' 篇）</h2>' +
+      '<div class="article-list">' + results.map(articleCardHTML).join('') + '</div>';
+  } else {
+    document.getElementById('app-content').innerHTML = '' +
+      '<div class="empty-state">' +
+        '<h3>🔍 没找到"' + q + '"相关文章</h3>' +
+        '<p>试试别的关键词，或<a onclick="renderHome()" style="color:var(--accent);cursor:pointer;">返回首页</a></p>' +
+      '</div>';
+  }
+  window.scrollTo(0, 0);
+}
+</script>
+
 </body>
 </html>
