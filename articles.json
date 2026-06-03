@@ -1,0 +1,60 @@
+{
+  "categories": [
+    {"id": "tech", "name": "技术学习", "icon": "tech", "desc": "主业相关 + 日常技术积累", "subCount": 4},
+    {"id": "ai", "name": "AI & 量化", "icon": "ai", "desc": "AI 应用 + 量化交易实战", "subCount": 4},
+    {"id": "biz", "name": "副业 & 创业", "icon": "biz", "desc": "项目选型 + 复盘记录", "subCount": 4},
+    {"id": "tools", "name": "工具箱", "icon": "tools", "desc": "日常工具 + 踩坑记录", "subCount": 4}
+  ],
+  "articles": [
+    {
+      "id": "linux-dd",
+      "cat": "tech-1",
+      "title": "Linux dd 命令详解",
+      "desc": "逐字节复制工具的语法、参数、磁盘测速实战与注意事项",
+      "tags": ["Linux", "dd", "磁盘", "命令行", "存储"],
+      "date": "2026-05-29",
+      "level": "中级",
+      "content": "<h2>概述</h2><p>dd 是 Linux 下最底层的磁盘数据复制工具，作用于字节流层面，可直接读写设备的原始数据而不经过文件系统。这使得 dd 既能用于数据复制，也能用于数据填充、磁盘基准测试、启动盘制作、数据粉碎等场景。</p><h2>基本语法</h2><pre class=code>dd if=源文件 of=目标文件 [选项]</pre><p>dd 没有标准输入输出，所有操作通过参数传递。if 和 of 是最核心的两个参数，分别代表输入文件和输出文件。</p><h2>参数详解</h2><p>dd 的参数分为四类：输入输出控制、块大小控制、转换模式、状态显示。</p><h3>输入输出控制</h3><table class=\"params-table\"><thead><tr><th>参数</th><th>含义</th><th>示例</th></tr></thead><tbody><tr><td><code>if=文件</code></td><td>输入源（文件或设备）</td><td><code>if=/dev/zero</code> 无限零字节</td></tr><tr><td><code>of=文件</code></td><td>输出目标</td><td><code>of=/tmp/test.img</code></td></tr><tr><td><code>iflag=标志</code></td><td>输入标志</td><td><code>iflag=direct</code> 直读磁盘</td></tr><tr><td><code>oflag=标志</code></td><td>输出标志</td><td><code>oflag=direct</code> 直写磁盘</td></tr></tbody></table><h3>块大小控制</h3><table class=\"params-table\"><thead><tr><th>参数</th><th>含义</th><th>示例</th></tr></thead><tbody><tr><td><code>bs=bytes</code></td><td>每次读写字节数</td><td><code>bs=1M</code> 每次 1MB</td></tr><tr><td><code>count=n</code></td><td>块数量</td><td><code>count=1024</code> 配合 bs=1M 时为 1GB</td></tr></tbody></table><h2>实战：磁盘读写测速</h2><p>这是最常用的性能测试场景，用于评估磁盘 I/O 能力。测速时必须加 <code>oflag=direct</code> 绕过缓存，得到真实速度。</p><h3>测顺序写入</h3><pre class=code>dd if=/dev/zero of=/tmp/test bs=1M count=1024 oflag=direct</code></pre><h3>测顺序读取</h3><pre class=code>dd if=/tmp/test of=/dev/null bs=1M iflag=direct</pre><h2>常见错误</h2><ul><li><strong>权限不足</strong>：操作 <code>/dev/sd*</code> 需要 root 权限</li><li><strong>目标路径错误</strong>：<code>/dev/sdb</code> 是整盘，<code>/dev/sdb1</code> 是第一个分区</li><li><strong>conv=fsync</strong>：制作启动盘时必须加，确保数据真正落盘</li></ul><h2>总结</h2><p>dd 是 Linux 最强大的底层工具之一，掌握 bs/count/skip/seek 这几个参数就能完成大多数日常任务。</p>"
+    },
+    {
+      "id": "kylin-adapt",
+      "cat": "tech-2",
+      "title": "银河麒麟应用启动时间测试方法",
+      "desc": "基于 xdotool 的桌面系统应用启动时间自动化测试方案与专利解读",
+      "tags": ["银河麒麟", "操作系统", "自动化测试", "xdotool", "专利"],
+      "date": "2026-06-01",
+      "level": "中级",
+      "content": "<h2>背景</h2><p>桌面操作系统应用启动时间测试，传统依赖人工秒表计时，存在较大误差。本文介绍基于 xdotool 的自动化测试方法。</p><h2>核心方案</h2><p>通过在桌面操作系统上运行测试脚本，配置待测应用的运行命令和窗口名称，使用 <code>xdotool</code> 工具循环搜索窗口名称，以开始时间到窗口名称匹配的时间差计算启动时间。</p><h2>方法步骤</h2><ol><li>在桌面操作系统上配置并运行应用启动时间测试脚本</li><li>脚本包含测试应用集（运行命令 + 预期窗口名称）</li><li>监测到应用启动指令时，记录<strong>开始时间 T1</strong></li><li>通过 <code>xdotool</code> 实时循环搜索应用窗口名称</li><li>窗口名称与预期匹配时，记录<strong>结束时间 T2</strong></li><li>计算启动时间 T = T2 - T1</li><li>生成测试报告并保存到日志文件</li></ol><h2>关键技术细节</h2><ul><li><strong>xdotool</strong>：专门使用该工具循环自动搜索窗口名称</li><li><strong>循环匹配</strong>：持续搜索直到窗口名称匹配成功</li><li><strong>xhost+</strong>：运行测试脚本前需先用该命令开放访问权限</li><li><strong>自动关闭</strong>：匹配成功后自动关闭应用程序</li></ul><h2>技术优势</h2><ul><li>适用于 Linux 桌面操作系统，填补自动化测试空缺</li><li>采用窗口名称匹配判断启动成功，避免图像识别误差</li><li>全自动化测试流程，极大提升测试效率</li></ul>"
+    },
+    {
+      "id": "freqtrade-intro",
+      "cat": "ai-3",
+      "title": "freqtrade 量化交易框架入门",
+      "desc": "开源加密货币量化框架，回测+模拟+实盘全流程支持",
+      "tags": ["量化交易", "freqtrade", "加密货币", "Python", "ccxt"],
+      "date": "2026-06-02",
+      "level": "入门",
+      "content": "<h2>为什么选 freqtrade</h2><p>freqtrade 是 GitHub 上 35k+ Star 的开源加密货币量化框架，特点：</p><ul><li>Python 编写，策略用 Python 即可</li><li>支持回测、模拟、实盘三种模式</li><li>插件化设计，扩展性强</li><li>配套 Telegram 机器人</li><li>完全免费开源</li></ul><h2>安装</h2><pre class=code>git clone https://github.com/freqtrade/freqtrade.git\ncd freqtrade\n./setup.sh -i  # 安装依赖</pre><h2>第一个策略</h2><p>在 <code>user_data/strategies/</code> 下创建 <code>MyFirstStrategy.py</code>：</p><pre class=code>class MyFirstStrategy(IStrategy):\n    INTERFACE_VERSION = 3\n\n    # 简单双均线策略\n    minimal_roi = {\"60\": 0.01, \"30\": 0.02, \"0\": 0.04}\n    stoploss = -0.10\n    timeframe = '5m'\n\n    def populate_indicators(self, dataframe, metadata):\n        dataframe['sma_fast'] = ta.SMA(dataframe, timeperiod=10)\n        dataframe['sma_slow'] = ta.SMA(dataframe, timeperiod=30)\n        return dataframe\n\n    def populate_entry_trend(self, dataframe, metadata):\n        dataframe.loc[\n            (dataframe['sma_fast'] > dataframe['sma_slow']),\n            'enter_long'] = 1\n        return dataframe</pre><h2>回测命令</h2><pre class=code>freqtrade backtesting \\\n  --strategy MyFirstStrategy \\\n  --timerange 20240101-20251231 \\\n  --timeframe 5m</pre><h2>实盘前必须看</h2><ul><li><strong>资金风险</strong>：合约爆仓可能亏光本金</li><li><strong>API Key</strong>：用只读+交易权限，别给提现权限</li><li><strong>服务器</strong>：VPS 7×24 运行，断电 = 失控</li><li><strong>测试网</strong>：先用 testnet 跑 1 个月再考虑实盘</li></ul><h2>关联项目</h2><p>freqtrade 依赖 <a href=\"https://github.com/ccxt/ccxt\" target=\"_blank\">ccxt</a> 库对接 100+ 交易所。如果做股票/A 股，看 <a href=\"https://github.com/vnpy/vnpy\" target=\"_blank\">vnpy</a>。</p>"
+    },
+    {
+      "id": "tools-online",
+      "cat": "tools-2",
+      "title": "在线工具收藏清单",
+      "desc": "日常高频使用的在线工具集，按场景分类",
+      "tags": ["工具", "效率", "在线工具"],
+      "date": "2026-06-02",
+      "level": "入门",
+      "content": "<h2>开发调试类</h2><ul><li><strong>JSON 格式化</strong>：json.cn / jsonformatter.org</li><li><strong>Base64 编解码</strong>：base64encode.org</li><li><strong>UUID 生成</strong>：uuidgenerator.net</li><li><strong>正则测试</strong>：regex101.com（支持中文/多 flag）</li><li><strong>JWT 解码</strong>：jwt.io</li><li><strong>时间戳转换</strong>：tool.lu/timestamp</li></ul><h2>网络诊断类</h2><ul><li><strong>DNS 查询</strong>：dnschecker.org（看域名在各地解析情况）</li><li><strong>IP 查询</strong>：ip.sb / ipinfo.io</li><li><strong>SSL 检测</strong>：ssllabs.com/ssltest（看证书链）</li><li><strong>端口扫描</strong>：yougetsignal.com（外网对自己 IP）</li></ul><h2>AI 工具</h2><ul><li><strong>临时邮箱</strong>：tempmail.cn（注册一次性账号）</li><li><strong>截图转代码</strong>：screenshot-to-code.com（看到好设计直接出代码）</li><li><strong>文档对话</strong>：chatpdf.com / humata.ai</li></ul><h2>写作类</h2><ul><li><strong>Markdown 在线编辑</strong>：markdown.com.cn / editor.mdnice.com</li><li><strong>排版转换</strong>：md2all.com（公众号一键排版）</li><li><strong>错别字检查</strong>：siwashuafen.cn</li></ul><h2>图片处理</h2><ul><li><strong>压缩</strong>：tinypng.com（PNG/JPG 智能压缩）</li><li><strong>抠图</strong>：remove.bg（一键抠图）</li><li><strong>格式转换</strong>：cloudconvert.com（支持 200+ 格式）</li><li><strong>SVG 优化</strong>：jakearchibald.github.io/svgomg</li></ul>"
+    },
+    {
+      "id": "biz-recycle",
+      "cat": "biz-2",
+      "title": "旧衣回收项目复盘（2026.3-2026.5）",
+      "desc": "运营 3 个月未盈利的复盘：流量、ROI、竞品分析",
+      "tags": ["副业", "复盘", "旧衣回收", "关停"],
+      "date": "2026-05-31",
+      "level": "中级",
+      "content": "<h2>项目背景</h2><p>2026 年 3 月开始做旧衣回收，目标：通过闲鱼 + 微信群接单，用户寄衣服 → 我对接 API 卖给飞蚂蚁/白鸽等回收平台。</p><h2>数据</h2><ul><li>总订单：~10 单</li><li>总收入：~150 元</li><li>推广成本：~300 元（闲鱼付费推广）</li><li>净利润：<strong>-150 元</strong>（亏）</li><li>时间投入：每天 30-60 分钟回消息</li></ul><h2>失败原因</h2><h3>1. 流量端不匹配</h3><p>旧衣回收本质是<strong>线下扫码 + 上门取件</strong>的生意，流量来源应该是小区/学校/工厂。我只在线上做（闲鱼/微信），用户没线下习惯，转化极低。</p><h3>2. 付费推广 ROI 极差</h3><p>闲鱼付费推广 ~100 元/次，每次 0-2 单，平均 ROI < 50%。连续 3 个月推广 = 持续亏损。</p><h3>3. 平台截流严重</h3><p>飞蚂蚁、闲鱼小程序、白鸽回收都在做，用户搜\"旧衣回收\"直接被大平台截流。我接 API 没有流量/税务优势，提现被吃光。</p><h3>4. 时间成本失控</h3><p>虽然订单少，但每天要回消息、协调快递、处理售后。没收益的精力消耗比亏钱更难受。</p><h2>核心教训</h2><ul><li><strong>流量来源决定 ROI</strong>：线下扫码类项目不适合纯线上玩家</li><li><strong>付费推广前先算账</strong>：连续 3 个月亏损就止损</li><li><strong>沉没成本不是成本</strong>：3 个月投入要放下，专注有效项目</li><li><strong>技术杠杆要能变优势</strong>：API 对接没壁垒，等于没壁垒</li></ul><h2>后续方向</h2><p>副业项目选型原则：</p><ul><li>✅ 线上推广能闭环</li><li>✅ 轻资产、低启动成本</li><li>✅ 现金流好、不靠烧钱</li><li>✅ 技术能力能变成杠杆（不是单纯接 API）</li></ul><p>已转向：快递项目（有自然现金流）+ funds.imoons.cn（量化信号订阅方向）</p>"
+    }
+  ]
+}
