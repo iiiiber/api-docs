@@ -3,7 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>API Reference — Prototype</title>
+<title>API Reference — NovaAPI v2.4</title>
+<meta name="description" content="NovaAPI v2 接口参考文档 - 用户、项目、Webhook、SDK 完整指南。RESTful API、代码示例、错误码速查。">
+<meta name="keywords" content="NovaAPI, API Reference, REST API, 用户管理, Webhook, SDK">
+<meta name="author" content="NovaAPI Team">
+<meta property="og:title" content="NovaAPI v2 — API Reference">
+<meta property="og:description" content="完整 RESTful API 接口文档，支持 JS/Python/Go/Rust 多语言 SDK。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://api-docs-51h.pages.dev/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NovaAPI v2 — API Reference">
+<meta name="twitter:description" content="完整 RESTful API 接口文档">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
@@ -642,6 +652,59 @@ body {
 }
 
 /* ─── Response Codes ─── */
+.response-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.status-dot.ok { background: var(--success); box-shadow: 0 0 6px rgba(16,185,129,0.4); }
+.status-dot.err { background: var(--danger); box-shadow: 0 0 6px rgba(239,68,68,0.4); }
+.status-dot.pending { background: var(--warning); animation: pulse 1s ease-in-out infinite; }
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.tryit-send:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* ─── Mobile Responsive ─── */
+@media (max-width: 900px) {
+  :root { --sidebar-width: 0px; }
+  .sidebar { transform: translateX(-100%); transition: transform 0.25s; width: 280px; }
+  .sidebar.open { transform: translateX(0); }
+  .main { margin-left: 0 !important; padding: 20px 16px !important; }
+  .on-this-page { display: none; }
+  .header-search { display: none; }
+  .mobile-menu-btn { display: inline-flex !important; }
+  .code-block pre { font-size: 12px; padding: 14px; }
+  .tryit-params { grid-template-columns: 1fr !important; }
+  .container, .layout { padding: 0 !important; }
+  .doc-content h1 { font-size: 24px !important; }
+  .doc-content h2 { font-size: 18px !important; }
+}
+.mobile-menu-btn {
+  display: none;
+  background: none; border: 1px solid var(--border); border-radius: 6px;
+  width: 36px; height: 36px; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--text-primary);
+}
+.sidebar-backdrop {
+  display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+  z-index: 49;
+}
+.sidebar-backdrop.show { display: block; }
 .response-codes {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -757,13 +820,18 @@ body {
 
 <!-- Header -->
 <header class="header">
-  <a href="#" class="header-logo">
+  <button class="mobile-menu-btn" id="mobile-menu-btn" onclick="toggleMobileSidebar()" aria-label="菜单">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+    </svg>
+  </button>
+  <a href="#section-top" class="header-logo" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
     <div class="logo-icon">N</div>
     NovaAPI
   </a>
   <div class="header-search">
     <span class="search-icon">&#x2315;</span>
-    <input type="text" placeholder="Search docs...">
+    <input type="text" id="doc-search" placeholder="Search docs..." oninput="filterDocs(this.value)" autocomplete="off">
     <span class="search-kbd">&#8984;K</span>
   </div>
   <div class="header-right">
@@ -786,8 +854,9 @@ body {
 </header>
 
 <div class="layout">
+  <div class="sidebar-backdrop" id="sidebar-backdrop" onclick="toggleMobileSidebar()"></div>
   <!-- Sidebar -->
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-title">入门指南</div>
       <ul class="sidebar-nav">
@@ -883,7 +952,7 @@ body {
 
     <!-- Parameters -->
     <div class="section">
-      <h2 class="section-title">查询参数</h2>
+      <h2 class="section-title" id="section-query-params">查询参数</h2>
       <table class="params-table">
         <thead>
           <tr>
@@ -948,7 +1017,7 @@ body {
 
     <!-- Example Request -->
     <div class="section">
-      <h2 class="section-title">Example Request</h2>
+      <h2 class="section-title" id="section-example-request">Example Request</h2>
       <div class="code-block">
         <div class="code-block-header">
           <div class="code-block-tabs">
@@ -968,7 +1037,7 @@ curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role
 
     <!-- Try It -->
     <div class="section">
-      <h2 class="section-title">Try It</h2>
+      <h2 class="section-title" id="section-try-it">Try It</h2>
       <div class="tryit-panel">
         <div class="tryit-header">
           <div class="tryit-title">
@@ -979,27 +1048,27 @@ curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role
         </div>
         <div class="tryit-url-bar">
           <span class="tryit-method">GET</span>
-          <input class="tryit-url-input" type="text" value="https://api.nova.io/v2/users?page=1&limit=20" readonly>
+          <input class="tryit-url-input" id="tryit-url" type="text" value="https://api.nova.io/v2/users?page=1&limit=20">
         </div>
         <div class="tryit-params">
           <div class="tryit-param-row">
             <label>page</label>
-            <input type="text" value="1" oninput="updateUrl()">
+            <input type="text" value="1" oninput="updateUrl()" />
           </div>
           <div class="tryit-param-row">
             <label>limit</label>
-            <input type="text" value="20" oninput="updateUrl()">
+            <input type="text" value="20" oninput="updateUrl()" />
           </div>
           <div class="tryit-param-row">
             <label>role</label>
-            <input type="text" placeholder="admin | member | viewer">
+            <input type="text" placeholder="admin | member | viewer" oninput="updateUrl()" />
           </div>
           <div class="tryit-param-row">
             <label>status</label>
-            <input type="text" placeholder="active | inactive | pending">
+            <input type="text" placeholder="active | inactive | pending" oninput="updateUrl()" />
           </div>
         </div>
-        <button class="tryit-send" onclick="sendRequest()">Send Request</button>
+        <button class="tryit-send" id="send-btn" onclick="sendRequest()">Send Request</button>
         <div class="response-status" id="response-status" style="display:none">
           <span class="status-dot ok" id="status-dot"></span>
           <span id="status-text">200 OK</span>
@@ -1039,7 +1108,7 @@ curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role
 
     <!-- Response Fields -->
     <div class="section">
-      <h2 class="section-title">Response Fields</h2>
+      <h2 class="section-title" id="section-response-fields">Response Fields</h2>
       <table class="response-fields">
         <thead>
           <tr>
@@ -1095,7 +1164,7 @@ curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role
 
     <!-- Response Codes -->
     <div class="section">
-      <h2 class="section-title">Response Codes</h2>
+      <h2 class="section-title" id="section-response-codes">Response Codes</h2>
       <div class="response-codes">
         <div class="response-code-card">
           <div class="code ok">200 OK</div>
@@ -1130,11 +1199,11 @@ curl -X GET <span class="str">"https://api.nova.io/v2/users?page=1&limit=20&role
   <aside class="on-this-page">
     <div class="otp-title">On This Page</div>
     <ul class="otp-links">
-      <li><a href="#" class="active">Query Parameters</a></li>
-      <li><a href="#">Example Request</a></li>
-      <li><a href="#">Try It</a></li>
-      <li><a href="#">Response Fields</a></li>
-      <li><a href="#">Response Codes</a></li>
+      <li><a href="#section-query-params" class="active">Query Parameters</a></li>
+      <li><a href="#section-example-request">Example Request</a></li>
+      <li><a href="#section-try-it">Try It</a></li>
+      <li><a href="#section-response-fields">Response Fields</a></li>
+      <li><a href="#section-response-codes">Response Codes</a></li>
     </ul>
   </aside>
 </div>
@@ -1162,10 +1231,48 @@ function copyCode(btn) {
   });
 }
 
+function toggleMobileSidebar() {
+  const sb = document.getElementById('sidebar');
+  const bd = document.getElementById('sidebar-backdrop');
+  if (sb) sb.classList.toggle('open');
+  if (bd) bd.classList.toggle('show');
+}
+
 function updateUrl() {
-  const page = document.querySelectorAll('.tryit-param-row input')[0].value || '1';
-  const limit = document.querySelectorAll('.tryit-param-row input')[1].value || '20';
-  document.querySelector('.tryit-url-input').value = `https://api.nova.io/v2/users?page=${page}&limit=${limit}`;
+  const inputs = document.querySelectorAll('.tryit-param-row input');
+  const page = inputs[0] && inputs[0].value || '1';
+  const limit = inputs[1] && inputs[1].value || '20';
+  const role = inputs[2] && inputs[2].value;
+  const status = inputs[3] && inputs[3].value;
+  let url = `https://api.nova.io/v2/users?page=${encodeURIComponent(page)}&limit=${encodeURIComponent(limit)}`;
+  if (role) url += `&role=${encodeURIComponent(role)}`;
+  if (status) url += `&status=${encodeURIComponent(status)}`;
+  const urlInput = document.querySelector('.tryit-url-input');
+  if (urlInput) urlInput.value = url;
+}
+
+function filterDocs(q) {
+  q = (q || '').trim().toLowerCase();
+  const items = document.querySelectorAll('.sidebar-nav li');
+  const sections = document.querySelectorAll('.sidebar-section');
+  if (!q) {
+    items.forEach(li => li.style.display = '');
+    sections.forEach(s => s.style.display = '');
+    return;
+  }
+  let anyVisible = false;
+  sections.forEach(sec => {
+    let sectionHasMatch = false;
+    const lis = sec.querySelectorAll('li');
+    lis.forEach(li => {
+      const text = li.textContent.toLowerCase();
+      const match = text.indexOf(q) !== -1;
+      li.style.display = match ? '' : 'none';
+      if (match) sectionHasMatch = true;
+    });
+    sec.style.display = sectionHasMatch ? '' : 'none';
+    if (sectionHasMatch) anyVisible = true;
+  });
 }
 
 function sendRequest() {
@@ -1173,13 +1280,87 @@ function sendRequest() {
   const statusDiv = document.getElementById('response-status');
   const statusDot = document.getElementById('status-dot');
   const statusText = document.getElementById('status-text');
+  const respBody = document.getElementById('response-body');
+  const sendBtn = document.getElementById('send-btn');
+  const urlInput = document.getElementById('tryit-url');
 
+  // 校验 URL
+  const url = urlInput ? urlInput.value.trim() : '';
+  if (!url) {
+    statusDiv.style.display = 'flex';
+    statusDot.className = 'status-dot err';
+    statusText.textContent = 'URL 为空';
+    statusText.style.color = '#ef4444';
+    if (respBody) respBody.textContent = '请填写请求 URL';
+    respDiv.classList.add('visible');
+    return;
+  }
+  try { new URL(url); }
+  catch (e) {
+    statusDiv.style.display = 'flex';
+    statusDot.className = 'status-dot err';
+    statusText.textContent = 'URL 无效';
+    statusText.style.color = '#ef4444';
+    if (respBody) respBody.textContent = 'URL 格式错误: ' + e.message;
+    respDiv.classList.add('visible');
+    return;
+  }
+
+  // 启动 loading
+  sendBtn.disabled = true;
+  const origText = sendBtn.textContent;
+  sendBtn.textContent = 'Sending…';
   statusDiv.style.display = 'flex';
-  statusDot.className = 'status-dot ok';
-  statusText.textContent = '200 OK';
-  statusText.style.color = '#10b981';
-
+  statusDot.className = 'status-dot pending';
+  statusText.textContent = '请求中…';
+  statusText.style.color = '#6b7280';
+  if (respBody) respBody.textContent = '';
   respDiv.classList.add('visible');
+
+  // 超时保护
+  const controller = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+  const timer = setTimeout(() => { if (controller) controller.abort(); }, 15000);
+
+  const fetchOpts = { method: 'GET', headers: { 'Accept': 'application/json' } };
+  if (controller) fetchOpts.signal = controller.signal;
+
+  fetch(url, fetchOpts)
+    .then(resp => {
+      clearTimeout(timer);
+      const code = resp.status;
+      const ok = resp.ok;
+      statusDot.className = 'status-dot ' + (ok ? 'ok' : 'err');
+      statusText.textContent = code + ' ' + (ok ? 'OK' : resp.statusText || 'Error');
+      statusText.style.color = ok ? '#10b981' : '#ef4444';
+      const ct = resp.headers.get('content-type') || '';
+      if (ct.indexOf('application/json') !== -1) {
+        return resp.json().then(data => JSON.stringify(data, null, 2));
+      }
+      return resp.text();
+    })
+    .then(body => {
+      if (respBody) {
+        respBody.textContent = body || '(空响应)';
+        respBody.style.color = '#e2e8f0';
+      }
+    })
+    .catch(err => {
+      clearTimeout(timer);
+      statusDot.className = 'status-dot err';
+      const isAbort = err && err.name === 'AbortError';
+      statusText.textContent = isAbort ? '请求超时 (15s)' : '网络错误';
+      statusText.style.color = '#ef4444';
+      if (respBody) {
+        respBody.textContent = isAbort
+          ? '请求超过 15 秒未响应，已自动取消。\n可能原因：\n• 网络不通\n• api.nova.io 不可达（CORS/跨域/域名不存在）\n• 目标服务器响应慢'
+          : '请求失败: ' + (err.message || err) + '\n\n提示：当前为前端 prototype，真实 api.nova.io 端点可能存在 CORS 限制。';
+      }
+    })
+    .finally(() => {
+      clearTimeout(timer);
+      sendBtn.disabled = false;
+      sendBtn.textContent = origText;
+    });
 }
 </script>
 </body>
