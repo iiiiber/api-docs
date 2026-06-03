@@ -685,7 +685,6 @@ body {
   .sidebar { transform: translateX(-100%); transition: transform 0.25s; width: 280px; }
   .sidebar.open { transform: translateX(0); }
   .main { margin-left: 0 !important; padding: 20px 16px !important; }
-  .on-this-page { display: none; }
   .header-search { display: none; }
   .mobile-menu-btn { display: inline-flex !important; }
   .code-block pre { font-size: 12px; padding: 14px; }
@@ -734,47 +733,9 @@ body {
   font-size: 12px;
 }
 
-/* ─── OnThisPage ─── */
-.on-this-page {
-  position: fixed;
-  top: var(--header-height);
-  right: 24px;
-  width: 200px;
-  padding: 20px 0;
-  display: none;
-}
-
-@media (min-width: 1200px) {
-  .on-this-page { display: block; }
-}
-
-.otp-title {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+/* OnThisPage CSS 已移除（2026-06-03 v0.3.1） */
   color: var(--text-muted);
   margin-bottom: 8px;
-}
-
-.otp-links {
-  list-style: none;
-}
-
-.otp-links a {
-  display: block;
-  padding: 4px 0;
-  font-size: 12.5px;
-  color: var(--text-muted);
-  text-decoration: none;
-  transition: color 0.12s;
-  border-left: 2px solid transparent;
-  padding-left: 10px;
-}
-
-.otp-links a:hover, .otp-links a.active {
-  color: var(--accent);
-  border-left-color: var(--accent);
 }
 
 /* ─── Breadcrumb ─── */
@@ -965,17 +926,6 @@ body {
       .breadcrumb-nav strong { color: var(--text-primary); font-weight: 500; }
     </style>
 
-  <!-- On This Page -->
-  <aside class="on-this-page">
-    <div class="otp-title">On This Page</div>
-    <ul class="otp-links">
-      <li><a href="#section-query-params" class="active">Query Parameters</a></li>
-      <li><a href="#section-example-request">Example Request</a></li>
-      <li><a href="#section-try-it">Try It</a></li>
-      <li><a href="#section-response-fields">Response Fields</a></li>
-      <li><a href="#section-response-codes">Response Codes</a></li>
-    </ul>
-  </aside>
 </div>
 
 <script>
