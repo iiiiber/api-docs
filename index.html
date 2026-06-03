@@ -1068,6 +1068,16 @@ function toggleMobileSidebar() {
   if (bd) bd.classList.toggle('show');
 }
 
+function closeSidebarIfMobile() {
+  // 仅在移动端（≤900px）自动关闭侧栏
+  if (window.innerWidth <= 900) {
+    const sb = document.getElementById('sidebar');
+    const bd = document.getElementById('sidebar-backdrop');
+    if (sb) sb.classList.remove('open');
+    if (bd) bd.classList.remove('show');
+  }
+}
+
 function updateUrl() {
   const inputs = document.querySelectorAll('.tryit-param-row input');
   const page = inputs[0] && inputs[0].value || '1';
@@ -1235,8 +1245,10 @@ function icon(name, size) {
   const svg = SVG_ICON_LIB[name] || SVG_ICON_LIB['wrench'] || '';
   if (!svg) return '';
   size = size || 14;
-  return svg.replace(/width="\d+"/, 'width="' + size + '"')
-             .replace(/height="\d+"/, 'height="' + size + '"');
+  const sized = svg.replace(/width="\d+"/, 'width="' + size + '"')
+                   .replace(/height="\d+"/, 'height="' + size + '"');
+  // 返回前加一个空格，避免拼接后与前一个标签粘连（如 <h3<svg>）
+  return ' ' + sized;
 }
 
 function levelBadge(level) {
@@ -1294,6 +1306,7 @@ function renderHome() {
     '</div>';
   document.getElementById('app-content').innerHTML = html;
   window.scrollTo(0, 0);
+  closeSidebarIfMobile();
 }
 
 function renderCategory(cat) {
@@ -1351,6 +1364,7 @@ function renderCategory(cat) {
   }
   document.getElementById('app-content').innerHTML = html;
   window.scrollTo(0, 0);
+  closeSidebarIfMobile();
 }
 
 function renderArticle(id) {
@@ -1387,6 +1401,7 @@ function renderArticle(id) {
   // 构建右侧目录
   setTimeout(buildTOC, 10);
   window.scrollTo(0, 0);
+  closeSidebarIfMobile();
 }
 
 function renderTodo() {
@@ -1408,6 +1423,7 @@ function renderTodo() {
       '</ul>' +
     '</div>';
   window.scrollTo(0, 0);
+  closeSidebarIfMobile();
 }
 
 function renderChangelog() {
@@ -1432,6 +1448,7 @@ function renderChangelog() {
       '</div>' +
     '</div>';
   window.scrollTo(0, 0);
+  closeSidebarIfMobile();
 }
 
 function filterDocs(q) {
@@ -1465,6 +1482,7 @@ function filterDocs(q) {
       '</div>';
   }
   window.scrollTo(0, 0);
+  closeSidebarIfMobile();
 }
 
 function buildTOC() {
