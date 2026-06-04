@@ -1,0 +1,286 @@
+{
+  "version": "0.4",
+  "generatedAt": "2026-06-04T16:55:07.330715Z",
+  "stats": {
+    "totalArticles": 17,
+    "totalCategories": 4,
+    "totalContentChars": 21252
+  },
+  "categories": [
+    {
+      "id": "tech",
+      "name": "技术学习",
+      "icon": "tech",
+      "desc": "主业相关 + 日常技术积累",
+      "subCount": 4
+    },
+    {
+      "id": "ai",
+      "name": "AI & 量化",
+      "icon": "ai",
+      "desc": "AI 应用 + 量化交易实战",
+      "subCount": 4
+    },
+    {
+      "id": "biz",
+      "name": "副业 & 创业",
+      "icon": "biz",
+      "desc": "项目选型 + 复盘记录",
+      "subCount": 4
+    },
+    {
+      "id": "tools",
+      "name": "工具箱",
+      "icon": "tools",
+      "desc": "日常工具 + 踩坑记录",
+      "subCount": 4
+    }
+  ],
+  "articles": [
+    {
+      "id": "linux-dd",
+      "cat": "tech-1",
+      "title": "Linux dd 命令详解",
+      "desc": "逐字节复制工具的语法、参数、磁盘测速实战与注意事项",
+      "tags": [
+        "Linux",
+        "dd",
+        "磁盘",
+        "命令行"
+      ],
+      "date": "2026-05-29",
+      "level": "中级"
+    },
+    {
+      "id": "kylin-adapt",
+      "cat": "tech-2",
+      "title": "银河麒麟应用启动时间测试方法",
+      "desc": "基于 xdotool 的桌面系统应用启动时间自动化测试方案与专利解读",
+      "tags": [
+        "银河麒麟",
+        "操作系统",
+        "自动化测试",
+        "xdotool",
+        "专利"
+      ],
+      "date": "2026-06-01",
+      "level": "中级"
+    },
+    {
+      "id": "kylin-faq-jmeter",
+      "cat": "tech-2",
+      "title": "JMeter 在银河麒麟上的安装与基本使用",
+      "desc": "性能测试工具 JMeter 在国产操作系统的部署、配置与常见操作",
+      "tags": [
+        "麒麟",
+        "JMeter",
+        "性能测试",
+        "压测",
+        "Java"
+      ],
+      "date": "2026-05-29",
+      "level": "入门"
+    },
+    {
+      "id": "kylin-faq-sysbench",
+      "cat": "tech-2",
+      "title": "Sysbench 在银河麒麟上的安装与基本使用",
+      "desc": "CPU/内存/磁盘 I/O 基准测试工具 Sysbench 的部署与典型测试命令",
+      "tags": [
+        "麒麟",
+        "Sysbench",
+        "基准测试",
+        "CPU",
+        "MySQL"
+      ],
+      "date": "2026-05-29",
+      "level": "入门"
+    },
+    {
+      "id": "kylin-faq-fio",
+      "cat": "tech-2",
+      "title": "fio 在银河麒麟上的安装与基本使用",
+      "desc": "磁盘 I/O 性能测试工具 fio 的部署、顺序/随机读写测试命令",
+      "tags": [
+        "麒麟",
+        "fio",
+        "磁盘",
+        "I/O",
+        "性能测试"
+      ],
+      "date": "2026-05-29",
+      "level": "入门"
+    },
+    {
+      "id": "kylin-faq-stressng",
+      "cat": "tech-2",
+      "title": "stress-ng 在银河麒麟上的安装与基本使用",
+      "desc": "系统压力测试工具 stress-ng 的部署、CPU/内存/IO 压测命令",
+      "tags": [
+        "麒麟",
+        "stress-ng",
+        "压力测试",
+        "稳定性"
+      ],
+      "date": "2026-05-29",
+      "level": "入门"
+    },
+    {
+      "id": "kylin-faq-iperf",
+      "cat": "tech-2",
+      "title": "iperf 在银河麒麟上的安装与基本使用",
+      "desc": "网络带宽测试工具 iperf 的部署、TCP/UDP 吞吐量测试命令",
+      "tags": [
+        "麒麟",
+        "iperf",
+        "网络",
+        "带宽",
+        "性能测试"
+      ],
+      "date": "2026-05-29",
+      "level": "入门"
+    },
+    {
+      "id": "kylin-faq-ab",
+      "cat": "tech-2",
+      "title": "ab (ApacheBench) 在银河麒麟上的安装与基本使用",
+      "desc": "HTTP 服务器压测工具 ab 的部署、并发测试与 Too many open files 排查",
+      "tags": [
+        "麒麟",
+        "ab",
+        "压测",
+        "HTTP",
+        "ApacheBench"
+      ],
+      "date": "2026-05-29",
+      "level": "入门"
+    },
+    {
+      "id": "openclaw-systems",
+      "cat": "tech-3",
+      "title": "OpenClaw 系统架构与已部署项目",
+      "desc": "鹏飞自建 OpenClaw 系统的 9 个 Agent 架构、cron 任务体系、已部署项目清单",
+      "tags": [
+        "OpenClaw",
+        "Agent",
+        "Cron",
+        "架构"
+      ],
+      "date": "2026-05-24",
+      "level": "中级"
+    },
+    {
+      "id": "cloudflare-pages-deploy",
+      "cat": "tech-4",
+      "title": "Cloudflare Pages + GitHub 自动化部署",
+      "desc": "通过 GitHub webhook 实现代码 push 后自动构建部署到 Cloudflare Pages 全流程",
+      "tags": [
+        "Cloudflare",
+        "GitHub",
+        "CI/CD",
+        "DevOps"
+      ],
+      "date": "2026-05-29",
+      "level": "中级"
+    },
+    {
+      "id": "freqtrade-intro",
+      "cat": "ai-3",
+      "title": "freqtrade 量化交易框架入门",
+      "desc": "开源加密货币量化框架，回测+模拟+实盘全流程支持",
+      "tags": [
+        "量化交易",
+        "freqtrade",
+        "加密货币",
+        "Python",
+        "ccxt"
+      ],
+      "date": "2026-06-02",
+      "level": "入门"
+    },
+    {
+      "id": "fund-analyzer",
+      "cat": "ai-3",
+      "title": "基金分析系统（fund-analyzer）开发文档",
+      "desc": "基于 fenxi.imoons.cn 架构设计，全新的 A 股基金分析平台",
+      "tags": [
+        "基金",
+        "Vue3",
+        "Node.js",
+        "PostgreSQL",
+        "且慢MCP"
+      ],
+      "date": "2026-04-27",
+      "level": "中级"
+    },
+    {
+      "id": "ai-side-income",
+      "cat": "ai-4",
+      "title": "AI 副业探索：工具栈与方向",
+      "desc": "用 AI 工具栈做副业的思路、可行方向与 ROI 评估",
+      "tags": [
+        "AI",
+        "副业",
+        "副业探索",
+        "工具栈"
+      ],
+      "date": "2026-06-02",
+      "level": "中级"
+    },
+    {
+      "id": "biz-recycle",
+      "cat": "biz-2",
+      "title": "旧衣回收项目复盘（2026.3-2026.5）",
+      "desc": "运营 3 个月未盈利的复盘：流量、ROI、竞品分析",
+      "tags": [
+        "副业",
+        "复盘",
+        "旧衣回收",
+        "关停"
+      ],
+      "date": "2026-05-31",
+      "level": "中级"
+    },
+    {
+      "id": "side-income-method",
+      "cat": "biz-3",
+      "title": "副业选品方法论：流量闭环 + 技术杠杆",
+      "desc": "基于旧衣回收复盘提炼的副业项目选型框架",
+      "tags": [
+        "副业",
+        "选品",
+        "方法论",
+        "ROI"
+      ],
+      "date": "2026-06-01",
+      "level": "中级"
+    },
+    {
+      "id": "tools-online",
+      "cat": "tools-2",
+      "title": "在线工具收藏清单",
+      "desc": "日常高频使用的在线工具集，按场景分类",
+      "tags": [
+        "工具",
+        "效率",
+        "在线工具"
+      ],
+      "date": "2026-06-02",
+      "level": "入门"
+    },
+    {
+      "id": "common-commands",
+      "cat": "tools-1",
+      "title": "Linux 常用命令速查",
+      "desc": "日常高频使用的 Linux 命令，按场景分类",
+      "tags": [
+        "Linux",
+        "命令",
+        "效率",
+        "速查"
+      ],
+      "date": "2026-06-01",
+      "level": "入门"
+    }
+  ]
+}
