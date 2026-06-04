@@ -16,6 +16,8 @@
 <meta name="twitter:description" content="鹏飞的个人综合知识库 - 技术、AI、量化、副业、工具">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- v0.4: 引入 marked.js 轻量 Markdown 解析 -->
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
 <style>
 :root {
   --bg: #ffffff;
@@ -954,6 +956,10 @@ body {
       @keyframes spin { to { transform: rotate(360deg); } }
       .article-meta { display: flex; gap: 12px; flex-wrap: wrap; color: var(--text-muted); font-size: 13px; margin: 12px 0 24px; }
       .article-meta span { display: inline-flex; align-items: center; gap: 4px; }
+      /* v0.4 loading 状态 */
+      .article-loading { padding: 40px 0; text-align: center; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 8px; }
+      .article-loading svg { animation: spin 1s linear infinite; }
+      @keyframes spin { from { transform: rotate(0); } to { transform: rotate(360deg); } }
       .article-body { line-height: 1.8; color: var(--text-primary); font-size: 15px; }
       .article-body h2 { font-size: 20px; font-weight: 600; margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
       .article-body h3 { font-size: 16px; font-weight: 600; margin: 20px 0 8px; color: var(--accent); }
@@ -961,6 +967,8 @@ body {
       .article-body ul, .article-body ol { padding-left: 24px; margin: 12px 0; }
       .article-body li { margin: 6px 0; }
       .article-body code { background: var(--bg-secondary); padding: 2px 6px; border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--accent); }
+      .article-body pre { background: var(--bg-code); color: #e4e4e7; padding: 16px 20px; border-radius: 8px; overflow-x: auto; line-height: 1.5; }
+      .article-body pre code { background: transparent; padding: 0; color: inherit; }
       .article-body pre { background: var(--bg-code); color: #cdd6f4; padding: 16px; border-radius: var(--radius); overflow-x: auto; margin: 16px 0; font-size: 13px; line-height: 1.6; }
       .article-body pre code { background: none; color: inherit; padding: 0; }
       .article-body table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
@@ -1230,14 +1238,56 @@ const CAT_ICONS = {
   'tools-1': 'terminal', 'tools-2': 'globe', 'tools-3': 'app', 'tools-4': 'bug'
 };
 
-// 加载数据
-fetch('articles.json?t=' + Date.now())
+// 加载数据（v0.4：只下元数据 index，单篇按需拉 Markdown）
+fetch('articles-index.json?t=' + Date.now())
   .then(r => r.json())
   .then(data => { KB_DATA = data; renderHome(); })
   .catch(err => {
     document.getElementById('app-content').innerHTML =
       '<div class="empty-state"><h3 style="display:flex;align-items:center;gap:8px;">' + icon('alert', 28, '加载失败') + '</h3><p>' + err.message + '</p></div>';
   });
+
+// 缓存已拉取的文章
+const ARTICLE_CACHE = {};
+// 预计算搜索索引（不包含 content，提回首屏 + 搜索性能）
+let SEARCH_INDEX = null;
+function buildSearchIndex() {
+  if (SEARCH_INDEX || !KB_DATA) return;
+  SEARCH_INDEX = KB_DATA.articles.map(function(a) {
+    return {
+      id: a.id,
+      text: (a.title + ' ' + (a.desc||'') + ' ' + (a.tags||[]).join(' ') + ' ' + (CAT_NAMES[a.cat]||a.cat)).toLowerCase()
+    };
+  });
+}
+
+// 拉取单篇 Markdown（v0.4）
+async function loadArticleContent(id) {
+  if (ARTICLE_CACHE[id]) return ARTICLE_CACHE[id];
+  const res = await fetch('articles/' + id + '.md?t=' + Date.now());
+  if (!res.ok) throw new Error('加载文章失败: ' + id);
+  const md = await res.text();
+  // 解析 frontmatter
+  const m = md.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+  let body = md, front = {};
+  if (m) {
+    body = m[2];
+    m[1].split('\n').forEach(function(line) {
+      const mm = line.match(/^(\w+):\s*(.*)$/);
+      if (mm) {
+        let v = mm[2].trim();
+        if (v.startsWith('[') && v.endsWith(']')) {
+          try { front[mm[1]] = JSON.parse(v); } catch(e) { front[mm[1]] = v; }
+        } else {
+          front[mm[1]] = v;
+        }
+      }
+    });
+  }
+  const html = (window.marked ? window.marked.parse(body) : '<pre>' + body + '</pre>');
+  ARTICLE_CACHE[id] = { html, front };
+  return ARTICLE_CACHE[id];
+}
 
 function setActive(cat) {
   document.querySelectorAll('.sidebar-nav a').forEach(a => a.classList.remove('active'));
@@ -1303,7 +1353,7 @@ function renderHome() {
       '<div style="display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 32px;">' +
         '<span style="background:var(--accent-light);color:var(--accent);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">' + icon('chart', 14, '共 ' + stats.total + ' 篇文章') + '</span>' +
         '<span style="background:rgba(16,185,129,0.1);color:var(--success);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">' + icon('cardbox', 22, stats.cats + ' 个分类') + '</span>' +
-        '<span style="background:rgba(245,158,11,0.1);color:var(--warning);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">v0.3 · 2026-06-03</span>' +
+        '<span style="background:rgba(245,158,11,0.1);color:var(--warning);padding:6px 14px;border-radius:14px;font-size:13px;font-weight:500;">v0.4 · 2026-06-04</span>' +
       '</div>' +
     '</div>' +
     '<h2 style="font-size: 18px; font-weight: 600; margin-bottom: 20px; color: var(--text-primary); display:flex;align-items:center;gap:8px;">' + icon('cardbox', 22, '四大分类') + '</h2>' +
@@ -1409,17 +1459,27 @@ function renderArticle(id) {
       icon('folder', 14, '<a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;">' + (CAT_NAMES[a.cat] || a.cat) + '</a>') +
     '</div>' +
     '<div class="article-tags">' + a.tags.map(function(t) { return '<span class="article-tag">#' + t + '</span>'; }).join('') + '</div>' +
-    '<div class="article-body">' + a.content + '</div>' +
+    '<div class="article-body" id="article-body-content"><div class="article-loading">' + icon('refresh', 14, '正在加载正文...') + '</div></div>' +
     '<div style="margin-top:48px;padding:20px;background:var(--bg-secondary);border-radius:var(--radius);text-align:center;">' +
       '<a onclick="renderCategory(\'' + a.cat + '\')" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;">← 返回 ' + (CAT_NAMES[a.cat] || a.cat) + '</a>' +
       '<span style="margin:0 16px;color:var(--text-muted);">|</span>' +
       '<a onclick="renderHome()" style="color:var(--accent);text-decoration:none;cursor:pointer;font-size:14px;display:inline-flex;align-items:center;gap:4px;">' + icon('home', 14, '回首页') + '</a>' +
     '</div>';
   document.getElementById('app-content').innerHTML = html;
-  // 构建右侧目录
-  setTimeout(buildTOC, 10);
   window.scrollTo(0, 0);
   closeSidebarIfMobile();
+
+  // 异步拉 Markdown（v0.4）
+  loadArticleContent(id).then(function(data) {
+    const current = KB_DATA.articles.find(function(x) { return x.id === id; });
+    if (!current) return;
+    const bodyEl = document.getElementById('article-body-content');
+    if (bodyEl) bodyEl.innerHTML = data.html;
+    buildTOC();
+  }).catch(function(err) {
+    const bodyEl = document.getElementById('article-body-content');
+    if (bodyEl) bodyEl.innerHTML = '<div class="empty-state"><h3>' + icon('alert', 28, '加载失败') + '</h3><p>' + err.message + '</p></div>';
+  });
 }
 
 function renderTodo() {
@@ -1450,6 +1510,16 @@ function renderChangelog() {
     '<h2 style="font-size:24px;font-weight:700;margin-bottom:24px;color:var(--text-primary);display:flex;align-items:center;gap:8px;">' + icon('calendar', 24, '更新日志') + '</h2>' +
     '<div style="border-left:2px solid var(--accent);padding-left:20px;">' +
       '<div style="margin-bottom:20px;">' +
+        '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-04</div>' +
+        '<div style="font-size:15px;font-weight:600;margin-bottom:4px;">v0.4 · 拆分加载 + Markdown 化</div>' +
+        '<p style="color:var(--text-secondary);font-size:14px;line-height:1.8;">首屏只拉 articles-index.json（7KB）不再是 38KB；单篇 articles/{id}.md 按需加载（1-2KB）；引入 marked.js 解析 Markdown；搜索加 200ms debounce + 预计算索引（不扫 content）。</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
+        '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-04</div>' +
+        '<div style="font-size:15px;font-weight:600;margin-bottom:4px;">v0.3.1 · BUG 修复</div>' +
+        '<p style="color:var(--text-secondary);font-size:14px;line-height:1.8;">setActive 精确匹配修复误高亮；icon() 增加第三参数 text 支持，27 处丢失文字恢复；Theme/GitHub 按钮加 onclick；版本号 v0.3 统一。</p>' +
+      '</div>' +
+      '<div style="margin-bottom:20px;">' +
         '<div style="font-size:13px;color:var(--text-muted);margin-bottom:4px;">2026-06-03</div>' +
         '<div style="font-size:15px;font-weight:600;margin-bottom:4px;">v0.3 · JSON 驱动 SPA 引擎</div>' +
         '<p style="color:var(--text-secondary);font-size:14px;line-height:1.8;">从静态 HTML 升级为 JSON 数据驱动，5 篇示范文章，支持侧边栏点击渲染对应视图。</p>' +
@@ -1469,10 +1539,18 @@ function renderChangelog() {
   closeSidebarIfMobile();
 }
 
+// v0.4：搜索 debounce + 预计算索引（仅扫元数据，不扫 content）
+let SEARCH_DEBOUNCE = null;
 function filterDocs(q) {
+  clearTimeout(SEARCH_DEBOUNCE);
+  SEARCH_DEBOUNCE = setTimeout(function() { doFilterDocs(q); }, 200);
+}
+
+function doFilterDocs(q) {
   q = (q || '').trim().toLowerCase();
   // 先恢复侧边栏所有 section 显示状态（避免上次搜索把侧边栏折叠）
   document.querySelectorAll('.sidebar-section').forEach(s => s.style.display = '');
+  document.querySelectorAll('.sidebar-nav li').forEach(li => li.style.display = '');
   document.querySelectorAll('.sidebar-section').forEach(function(sec) {
     let sectionHasMatch = false;
     sec.querySelectorAll('li').forEach(function(li) {
@@ -1486,9 +1564,12 @@ function filterDocs(q) {
     sec.style.display = (q && !sectionHasMatch) ? 'none' : '';
   });
   if (!q || !KB_DATA) return;
-  const results = KB_DATA.articles.filter(function(a) {
-    const text = (a.title + ' ' + a.desc + ' ' + a.tags.join(' ') + ' ' + (a.content || '')).toLowerCase();
-    return text.indexOf(q) >= 0;
+  // v0.4：使用预计算索引（不扫 content，极快）
+  buildSearchIndex();
+  const results = SEARCH_INDEX.filter(function(idx) {
+    return idx.text.indexOf(q) >= 0;
+  }).map(function(idx) {
+    return KB_DATA.articles.find(function(a) { return a.id === idx.id; });
   });
   if (results.length > 0) {
     document.getElementById('app-content').innerHTML = '' +
